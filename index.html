@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+  <title>Calma</title>
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/favicon/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/favicon/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="img/favicon/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/favicon/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="img/favicon/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/favicon/apple-touch-icon-152x152.png" />
+  <link rel="icon" type="image/png" href="img/favicon/favicon-196x196.png" sizes="196x196" />
+  <link rel="icon" type="image/png" href="img/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="img/favicon/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="img/favicon/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="img/favicon/favicon-128.png" sizes="128x128" />
+  <style>
+    html, body {
+      margin: 0; 
+      padding: 0;
+      width: 100%; 
+      height: 100%;
+      overflow: hidden;
+      font-family: sans-serif;
+      color: #fff;
+      background: #000;
+      position: relative;
+    }
+
+    /* Position elements above the canvas */
+    header, main, footer {
+      position: absolute;
+      z-index: 9999;
+    }
+
+    /* Header: top bar with logo on the left and Hiring link on the right */
+    header {
+      top: 0; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+    }
+    .logo {
+      font-size: 1.5rem; 
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    .hiring {
+      color: #fff;
+      text-decoration: none;
+      position: relative;
+      font-size: 1rem;
+      font-weight: normal;
+    }
+    .hiring .notification-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: red;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+
+    /* Main (centered) */
+    main {
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      padding: 0 20px;
+      max-width: 90vw;
+    }
+    .center-text {
+      font-size: 1.5rem; 
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    /* Footer at bottom (full width) */
+    footer {
+      bottom: 10px; 
+      left: 0; 
+      width: 100%; 
+      text-align: center;
+      font-size: 0.9rem; 
+      opacity: 0.8;
+      background: rgba(0,0,0,0.3);
+      padding: 10px 0;
+    }
+
+    @media (max-width: 600px) {
+      header .logo { font-size: 1.2rem; }
+      .center-text { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Calma</div>
+    <a 
+      class="hiring" 
+      href="https://calma-ad.notion.site/FB-Calma-Agency-169f120c65df8062993dc296b245202d" 
+      target="_blank"
+      >
+      Hiring
+      <span class="notification-dot"></span>
+    </a>
+  </header>
+
+  <main>
+    <div class="center-text">Keep calm, Calma generates leads</div>
+  </main>
+
+  <footer>
+    <span class="contact-email">info@calma.ad</span>
+  </footer>
+
+  <!-- Canvas for the wave animation -->
+  <canvas id="waveCanvas"></canvas>
+
+  <script>
+    (function() {
+      var canvas = document.getElementById('waveCanvas');
+      var ctx = canvas.getContext('2d');
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      // Generate multiple random waves for an organic, random look
+      var waves = [];
+      for (var i = 0; i < 5; i++) {
+        waves.push({
+          amplitude: 10 + Math.random() * 40,       // random amplitude (10-50)
+          wavelength: 200 + Math.random() * 400,    // random wavelength (200-600)
+          speed: 0.01,                              // gentle speed for calmer animation
+          color: randomWaveColor(),
+          phase: Math.random() * 100
+        });
+      }
+
+      function randomWaveColor() {
+        // Generate a random blueish color with some transparency
+        var g = 50 + Math.floor(Math.random() * 205);
+        var b = 100 + Math.floor(Math.random() * 155);
+        return 'rgba(0,' + g + ',' + b + ',0.3)';
+      }
+
+      function drawWave(wave) {
+        ctx.beginPath();
+        ctx.moveTo(0, canvas.height / 2);
+        // Slight random variation
+        var variationFactor = 5;
+        for (var x = 0; x <= canvas.width; x++) {
+          var variation = Math.sin(Date.now() * 0.0001 + wave.phase) * variationFactor;
+          var y = canvas.height / 2 + 
+            Math.sin((x + wave.phase) * (2 * Math.PI / (wave.wavelength + variation))) 
+            * (wave.amplitude + variation);
+          ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = wave.color;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (var i = 0; i < waves.length; i++) {
+          drawWave(waves[i]);
+          // Advance the phase at the configured speed
+          waves[i].phase += waves[i].speed;
+        }
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    })();
+  </script>
+</body>
+</html>

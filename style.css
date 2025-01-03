@@ -1,0 +1,95 @@
+html, body {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    font-family: sans-serif;
+    color: #fff;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* Simpler animated gradient */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+
+    /* A two-color gradient that moves from left to right */
+    background: linear-gradient(to right, #002f4b, #00a7e1);
+    background-size: 200% 100%;
+
+    animation: waveAnimation 10s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes waveAnimation {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header, main, footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Logo */
+header {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Center text */
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.center-text {
+    font-size: 1.5rem;
+    line-height: 1.4;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-size: 0.9rem;
+    background: rgba(0,0,0,0.3);
+}
+
+.footer-line {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
+.contact-email, .company-data {
+    opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .logo { font-size: 1.2rem; }
+    .center-text { font-size: 1.2rem; }
+    .footer-line { flex-direction: column; gap: 10px; }
+}
