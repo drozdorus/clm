@@ -106,15 +106,30 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Header background on scroll
+// Header background on scroll + Wave fade
 window.addEventListener('scroll', function() {
   const header = document.querySelector('.header');
+  const canvas = document.getElementById('waveCanvas');
   const scrolled = window.pageYOffset;
   
+  // Header background
   if (scrolled > 50) {
     header.style.background = 'rgba(26, 26, 26, 0.98)';
   } else {
     header.style.background = 'rgba(26, 26, 26, 0.95)';
+  }
+  
+  // Wave fade on scroll for better text readability
+  const fadeStart = 100;
+  const fadeEnd = 300;
+  
+  if (scrolled <= fadeStart) {
+    canvas.style.opacity = '1';
+  } else if (scrolled >= fadeEnd) {
+    canvas.style.opacity = '0.1';
+  } else {
+    const opacity = 1 - ((scrolled - fadeStart) / (fadeEnd - fadeStart)) * 0.9;
+    canvas.style.opacity = opacity.toString();
   }
 });
 
@@ -147,13 +162,21 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   submitButton.textContent = 'Sending...';
   submitButton.disabled = true;
   
-  // Simulate form submission (replace with actual submission logic)
+  // Create mailto link and submit form
+  const subject = `New Contact Form Submission from ${data.name}`;
+  const body = `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || 'Not specified'}\n\nMessage:\n${data.message}`;
+  const mailtoLink = `mailto:info@calma.ad?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  
+  // Open email client
+  window.location.href = mailtoLink;
+  
+  // Show success message
   setTimeout(() => {
-    showNotification('Thank you for your message! We\'ll get back to you soon.', 'success');
+    showNotification('Email client opened. Please send the email to complete your message.', 'success');
     this.reset();
     submitButton.textContent = originalText;
     submitButton.disabled = false;
-  }, 2000);
+  }, 1000);
 });
 
 // Email validation
@@ -281,30 +304,77 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Parallax effect for hero section
-window.addEventListener('scroll', function() {
+// Parallax effect for hero section (reduced for better performance)
+let ticking = false;
+
+function updateParallax() {
   const scrolled = window.pageYOffset;
   const hero = document.querySelector('.hero');
   
-  if (hero) {
-    const speed = scrolled * 0.5;
+  if (hero && scrolled < window.innerHeight) {
+    const speed = scrolled * 0.3;
     hero.style.transform = `translateY(${speed}px)`;
+  }
+  
+  ticking = false;
+}
+
+window.addEventListener('scroll', function() {
+  if (!ticking) {
+    requestAnimationFrame(updateParallax);
+    ticking = true;
   }
 });
 
-// Mobile menu toggle (if needed for smaller screens)
-function createMobileMenu() {
-  const header = document.querySelector('.header-content');
-  const nav = document.querySelector('.nav');
+// Mobile menu functionality
+function toggleMobileMenu() {
+  const mobileMenu = document.getElementById('mobileMenu');
+  mobileMenu.classList.toggle('active');
   
-  if (window.innerWidth <= 768) {
-    // Add mobile menu functionality if nav overflows
-    const navRect = nav.getBoundingClientRect();
-    if (navRect.width > window.innerWidth - 100) {
-      // Implement mobile menu logic here if needed
-    }
+  // Prevent body scroll when menu is open
+  if (mobileMenu.classList.contains('active')) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
   }
 }
 
-window.addEventListener('resize', createMobileMenu);
-document.addEventListener('DOMContentLoaded', createMobileMenu);
+function closeMobileMenu() {
+  const mobileMenu = document.getElementById('mobileMenu');
+  mobileMenu.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Make closeMobileMenu globally available
+window.closeMobileMenu = closeMobileMenu;
+
+// Mobile menu event listeners
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenuClose = document.getElementById('mobileMenuClose');
+  const mobileMenu = document.getElementById('mobileMenu');
+  
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  }
+  
+  if (mobileMenuClose) {
+    mobileMenuClose.addEventListener('click', closeMobileMenu);
+  }
+  
+  // Close mobile menu when clicking outside
+  if (mobileMenu) {
+    mobileMenu.addEventListener('click', function(e) {
+      if (e.target === mobileMenu) {
+        closeMobileMenu();
+      }
+    });
+  }
+  
+  // Close mobile menu on window resize if desktop
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      closeMobileMenu();
+    }
+  });
+});
