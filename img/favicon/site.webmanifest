@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Calma",
+  "short_name": "Calma",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
