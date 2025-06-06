@@ -133,50 +133,58 @@ window.addEventListener('scroll', function() {
   }
 });
 
-// Contact form handling
+// Contact form handling with Formspree
 document.getElementById('contactForm').addEventListener('submit', function(e) {
   e.preventDefault();
   
-  const formData = new FormData(this);
-  const data = {
-    name: formData.get('name'),
-    email: formData.get('email'),
-    company: formData.get('company'),
-    message: formData.get('message')
-  };
+  const form = this;
+  const formData = new FormData(form);
   
   // Simple form validation
-  if (!data.name || !data.email || !data.message) {
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const message = formData.get('message');
+  
+  if (!name || !email || !message) {
     showNotification('Please fill in all required fields.', 'error');
     return;
   }
   
-  if (!isValidEmail(data.email)) {
+  if (!isValidEmail(email)) {
     showNotification('Please enter a valid email address.', 'error');
     return;
   }
   
   // Show loading state
-  const submitButton = this.querySelector('.submit-button');
+  const submitButton = form.querySelector('.submit-button');
   const originalText = submitButton.textContent;
   submitButton.textContent = 'Sending...';
   submitButton.disabled = true;
   
-  // Create mailto link and submit form
-  const subject = `New Contact Form Submission from ${data.name}`;
-  const body = `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || 'Not specified'}\n\nMessage:\n${data.message}`;
-  const mailtoLink = `mailto:info@calma.ad?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  
-  // Open email client
-  window.location.href = mailtoLink;
-  
-  // Show success message
-  setTimeout(() => {
-    showNotification('Email client opened. Please send the email to complete your message.', 'success');
-    this.reset();
+  // Submit to Formspree
+  fetch(form.action, {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      showNotification('Thank you for your message! We\'ll get back to you soon.', 'success');
+      form.reset();
+    } else {
+      throw new Error('Form submission failed');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    showNotification('Sorry, there was a problem sending your message. Please try again.', 'error');
+  })
+  .finally(() => {
     submitButton.textContent = originalText;
     submitButton.disabled = false;
-  }, 1000);
+  });
 });
 
 // Email validation

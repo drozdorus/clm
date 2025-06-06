@@ -330,6 +330,71 @@ body {
   font-size: 1.2rem;
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 60px;
+}
+
+.traffic-sources {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.traffic-sources-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #FFD700;
+}
+
+.traffic-sources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.traffic-source {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 25px 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.traffic-source:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 215, 0, 0.2);
+}
+
+.traffic-source-logo {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.traffic-source-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.traffic-source:hover .traffic-source-logo {
+  transform: scale(1.1);
+}
+
+.traffic-source span {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
 }
 
 /* Services Section */
@@ -430,6 +495,38 @@ body {
   box-shadow: 0 15px 30px rgba(0, 255, 127, 0.1);
 }
 
+.conference-logo {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #FFD700, #00FF7F);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  transition: all 0.3s ease;
+}
+
+.conference-card:hover .conference-logo {
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+}
+
+.conference-logo-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1;
+}
+
+.conference-logo-subtitle {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: rgba(26, 26, 26, 0.8);
+  line-height: 1;
+}
+
 .conference-date {
   color: #00FF7F;
   font-weight: 600;
@@ -450,17 +547,18 @@ body {
 
 .conference-link {
   display: inline-block;
-  color: #00FF7F;
+  color: #FFD700;
   text-decoration: none;
   font-weight: 500;
   padding: 10px 20px;
-  border: 1px solid #00FF7F;
+  border: 1px solid #FFD700;
   border-radius: 25px;
   transition: all 0.3s ease;
 }
 
 .conference-link:hover {
   background: #00FF7F;
+  border-color: #00FF7F;
   color: #1a1a1a;
 }
 
@@ -490,11 +588,13 @@ body {
 }
 
 .contact-email a {
-  color: #00FF7F;
+  color: #FFD700;
   text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .contact-email a:hover {
+  color: #00FF7F;
   text-decoration: underline;
 }
 
@@ -602,6 +702,24 @@ body {
   font-size: 0.9rem;
 }
 
+.footer-social {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-linkedin {
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.footer-linkedin:hover {
+  color: #FFD700;
+  background: rgba(255, 215, 0, 0.1);
+  transform: translateY(-2px);
+}
+
 /* Animations */
 @keyframes fadeInUp {
   from {
@@ -675,6 +793,16 @@ body {
   .footer-content {
     flex-direction: column;
     text-align: center;
+  }
+  
+  .traffic-sources-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 300px;
+  }
+  
+  .traffic-source {
+    padding: 20px 15px;
   }
 }
 
