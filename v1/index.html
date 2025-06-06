@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+  <title>Calma - Lead Generation Agency</title>
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/favicon/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/favicon/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="img/favicon/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/favicon/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="img/favicon/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/favicon/apple-touch-icon-152x152.png" />
+  <link rel="icon" type="image/png" href="img/favicon/favicon-196x196.png" sizes="196x196" />
+  <link rel="icon" type="image/png" href="img/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="img/favicon/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="img/favicon/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="img/favicon/favicon-128.png" sizes="128x128" />
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Calma Agency - Lead Generation Specialists" />
+  <meta name="description" content="Where data meets creativity to fuel lead generation success. Keep calm, Calma generates leads." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://calma.ad/" />
+  <meta property="og:title" content="Calma Agency - Lead Generation Specialists" />
+  <meta property="og:description" content="Where data meets creativity to fuel lead generation success." />
+  <meta property="og:image" content="img/metaimg.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://calma.ad/" />
+  <meta property="twitter:title" content="Calma Agency - Lead Generation Specialists" />
+  <meta property="twitter:description" content="Where data meets creativity to fuel lead generation success." />
+  <meta property="twitter:image" content="img/metaimg.png" />
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Canvas for wave animation (background) -->
+  <canvas id="waveCanvas"></canvas>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <svg class="logo-wave" viewBox="0 0 100 30" width="40" height="12">
+            <defs>
+              <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#00FF7F;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <path d="M0,15 Q25,5 50,15 T100,15" stroke="url(#waveGradient)" stroke-width="3" fill="none"/>
+          </svg>
+          <span class="logo-text">calma</span>
+        </div>
+        
+        <nav class="nav">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#conferences" class="nav-link">Events</a>
+          <a href="#contact" class="nav-link">Contact</a>
+          <a href="https://www.linkedin.com/company/calma-agency/" target="_blank" class="social-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="https://calma-ad.notion.site/Open-Vacancies-Calma-Agency-169f120c65df806bba68fc5163bcfa52?pvs=4" target="_blank" class="hiring-link">
+            Hiring
+            <span class="notification-dot"></span>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Keep calm,<br>Calma generates leads</h1>
+        <p class="hero-subtitle">Where data meets creativity to fuel lead generation success</p>
+        <a href="#contact" class="cta-button">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about">
+    <div class="container">
+      <h2 class="section-title">About Calma</h2>
+      <div class="about-content">
+        <p class="about-text">
+          Calma is a specialized B2C lead generation agency that bridges the gap between top-tier talent and high-converting opportunities. We connect skilled contractors specializing in Facebook Advertising and Google Ads with the infrastructure they need to excel, while delivering quality leads to affiliate networks and direct clients.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section services">
+    <div class="container">
+      <h2 class="section-title">What We Do</h2>
+      <p class="section-subtitle">We specialize in high-converting B2C lead generation across multiple verticals</p>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🚗</div>
+          <h3 class="service-title">Car Insurance</h3>
+          <p class="service-description">Connecting customers with trusted car insurance providers</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">🏠</div>
+          <h3 class="service-title">Home Insurance</h3>
+          <p class="service-description">Quality leads for home insurance companies</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">⚖️</div>
+          <h3 class="service-title">Legal Services</h3>
+          <p class="service-description">Qualified leads for law firms and legal practices</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">🔨</div>
+          <h3 class="service-title">Home Improvement</h3>
+          <p class="service-description">Contractors and service providers</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">💰</div>
+          <h3 class="service-title">Finance</h3>
+          <p class="service-description">Lending, credit, and financial service leads</p>
+        </div>
+      </div>
+      
+      <div class="approach">
+        <p>Our approach combines data-driven targeting with creative excellence, delivering quality leads that convert.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conferences Section -->
+  <section id="conferences" class="section conferences">
+    <div class="container">
+      <h2 class="section-title">Meet Our Team</h2>
+      <p class="section-subtitle">Find us at these upcoming industry events</p>
+      
+      <div class="conferences-grid">
+        <div class="conference-card">
+          <div class="conference-date">9-10 Jul 2025</div>
+          <h3 class="conference-name">Barcelona Affiliate Takeover</h3>
+          <p class="conference-location">Barcelona, Spain</p>
+          <a href="https://www.affiliatetakeover.com/" target="_blank" class="conference-link">Learn More</a>
+        </div>
+        
+        <div class="conference-card">
+          <div class="conference-date">4-5 Aug 2025</div>
+          <h3 class="conference-name">Affiliate Summit East</h3>
+          <p class="conference-location">New York, NY</p>
+          <a href="https://www.affiliatesummit.com/east" target="_blank" class="conference-link">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <h3>Ready to generate quality leads?</h3>
+          <p>Let's discuss how we can help grow your business.</p>
+          <div class="contact-email">
+            <span>Email us: </span>
+            <a href="mailto:info@calma.ad">info@calma.ad</a>
+          </div>
+        </div>
+        
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <input type="text" id="company" name="company" placeholder="Company (optional)">
+          </div>
+          <div class="form-group">
+            <textarea id="message" name="message" placeholder="Tell us about your project" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="submit-button">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <svg class="logo-wave" viewBox="0 0 100 30" width="30" height="9">
+            <defs>
+              <linearGradient id="footerWaveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.7" />
+                <stop offset="100%" style="stop-color:#00FF7F;stop-opacity:0.7" />
+              </linearGradient>
+            </defs>
+            <path d="M0,15 Q25,5 50,15 T100,15" stroke="url(#footerWaveGradient)" stroke-width="2" fill="none"/>
+          </svg>
+          <span>calma</span>
+        </div>
+        <div class="footer-text">
+          © 2025 Calma Agency. Keep calm, we generate leads.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
