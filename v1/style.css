@@ -498,6 +498,29 @@ body {
   text-decoration: underline;
 }
 
+.careers-link {
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.careers-link p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.careers-link-text {
+  color: #FFD700;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.careers-link-text:hover {
+  color: #00FF7F;
+  text-decoration: underline;
+}
+
 /* Contact Form */
 .contact-form {
   background: rgba(255, 255, 255, 0.05);
