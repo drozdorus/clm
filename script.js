@@ -56,17 +56,37 @@
       ctx.lineTo(x, y);
     }
     
-    // Create gradient stroke
-    ctx.strokeStyle = createGradient(wave, ctx, canvas);
+    // Add subtle glow effect for smoother fade
+    const gradient = createGradient(wave, ctx, canvas);
+    ctx.shadowColor = gradient;
+    ctx.shadowBlur = 8;
+    ctx.strokeStyle = gradient;
     ctx.lineWidth = 2 + Math.sin(Date.now() * 0.001 + wave.phase) * 0.5;
     ctx.lineCap = 'round';
     ctx.stroke();
+    
+    // Reset shadow
+    ctx.shadowBlur = 0;
   }
 
   function animate() {
-    // Clear canvas with subtle fade effect
-    ctx.fillStyle = 'rgba(26, 26, 26, 0.05)';
+    // Clear canvas with smooth fade effect and blur
+    ctx.save();
+    
+    // Apply subtle blur to soften the fade edges (with fallback)
+    if (ctx.filter !== undefined) {
+      ctx.filter = 'blur(0.5px)';
+    }
+    ctx.globalAlpha = 0.08;
+    ctx.fillStyle = '#1a1a1a';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Reset filter and alpha
+    if (ctx.filter !== undefined) {
+      ctx.filter = 'none';
+    }
+    ctx.globalAlpha = 1;
+    ctx.restore();
     
     // Update and draw waves
     waves.forEach(wave => {

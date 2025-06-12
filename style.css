@@ -1,3 +1,46 @@
+/* Fonts */
+
+
+@font-face {
+  font-family: 'Nexa';
+  src: url('./fonts/nexa/Nexa-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geologica';
+  src: url('./fonts/geologica/Geologica-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geologica';
+  src: url('./fonts/geologica/Geologica-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geologica';
+  src: url('./fonts/geologica/Geologica-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geologica';
+  src: url('./fonts/geologica/Geologica-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Reset and base styles */
 * {
   margin: 0;
@@ -10,12 +53,17 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: 'Geologica', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.6;
   color: #ffffff;
   background-color: #1a1a1a;
   overflow-x: hidden;
   position: relative;
+}
+
+/* Headings use Nexa font */
+h1 {
+  font-family: 'Nexa', 'Geologica', sans-serif;
 }
 
 /* Canvas background */
@@ -73,8 +121,9 @@ body {
 }
 
 .logo-text {
+  font-family: 'Nexa', sans-serif;
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.02em;
 }
 
@@ -148,6 +197,7 @@ body {
 }
 
 .nav-link {
+  font-family: 'Geologica', sans-serif;
   color: #ffffff;
   text-decoration: none;
   font-weight: 400;
@@ -187,6 +237,7 @@ body {
 }
 
 .hiring-link {
+  font-family: 'Geologica', sans-serif;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -256,6 +307,7 @@ body {
 }
 
 .cta-button {
+  font-family: 'Geologica', sans-serif;
   display: inline-block;
   padding: 15px 35px;
   background: linear-gradient(135deg, #FFD700, #00FF7F);
@@ -531,12 +583,13 @@ body {
 }
 
 .conference-name {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 10px;
 }
 
 .conference-location {
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 25px;
 }
@@ -626,6 +679,7 @@ body {
 
 .form-group input,
 .form-group textarea {
+  font-family: 'Geologica', sans-serif;
   width: 100%;
   padding: 15px;
   background: rgba(255, 255, 255, 0.1);
@@ -649,6 +703,7 @@ body {
 }
 
 .submit-button {
+  font-family: 'Geologica', sans-serif;
   width: 100%;
   padding: 15px;
   background: linear-gradient(135deg, #FFD700, #00FF7F);
