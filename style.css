@@ -316,9 +316,7 @@ body {
 }
 
 /* About Section */
-.about {
-  background: rgba(255, 215, 0, 0.03);
-}
+
 
 .about-content {
   max-width: 800px;
@@ -334,7 +332,7 @@ body {
 }
 
 .traffic-sources {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   text-align: center;
 }
@@ -350,7 +348,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  max-width: 400px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -373,7 +371,7 @@ body {
 }
 
 .traffic-source-logo {
-  width: 48px;
+  width: 200px;
   height: 48px;
   display: flex;
   align-items: center;
@@ -382,7 +380,7 @@ body {
 }
 
 .traffic-source-logo img {
-  width: 100%;
+  width: 80%;
   height: 100%;
   object-fit: contain;
 }
@@ -468,15 +466,13 @@ body {
 }
 
 /* Conferences Section */
-.conferences {
-  background: rgba(0, 255, 127, 0.03);
-}
+
 
 .conferences-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 40px;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -490,7 +486,7 @@ body {
 }
 
 .conference-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px)
   border-color: rgba(0, 255, 127, 0.3);
   box-shadow: 0 15px 30px rgba(0, 255, 127, 0.1);
 }
@@ -550,16 +546,11 @@ body {
   color: #FFD700;
   text-decoration: none;
   font-weight: 500;
-  padding: 10px 20px;
-  border: 1px solid #FFD700;
-  border-radius: 25px;
-  transition: all 0.3s ease;
 }
 
 .conference-link:hover {
-  background: #00FF7F;
-  border-color: #00FF7F;
-  color: #1a1a1a;
+  color: #00FF7F;
+  text-decoration: underline;
 }
 
 /* Contact Section */
@@ -698,6 +689,11 @@ body {
 }
 
 .footer-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+.privacy {
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
 }
