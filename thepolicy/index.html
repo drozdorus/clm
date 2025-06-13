@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Auto Insurance Quotes - ThePolicy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Логотип */
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo .domain {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-top: 5px;
+        }
+
+        .progress-container {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 5px;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #4CAF50;
+            border-radius: 25px;
+            width: 33.33%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: white;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .quiz-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .quiz-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .quiz-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .quiz-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .step {
+            display: none;
+            padding: 40px 30px;
+            min-height: 400px;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        .step-content h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .step-content p {
+            font-size: 1.1rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .options-group {
+            display: grid;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .option-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .option-card:hover {
+            transform: translateY(-3px);
+            border-color: #667eea;
+        }
+
+        .option-card.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .option-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .option-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .option-card p {
+            color: #666;
+            margin: 0;
+        }
+
+        .option-card.selected p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .bundle-highlight {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        .bundle-highlight p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ff4757;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* РЕЗУЛЬТАТИ */
+        .results-content {
+            padding: 40px 30px;
+        }
+
+        .results-content h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #333;
+        }
+
+        .results-subtext {
+            font-size: 1.1rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Інсентив бокс */
+        .incentive-box {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0 30px 0;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .incentive-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .incentive-box p {
+            margin: 0;
+            opacity: 0.95;
+        }
+
+        .offers-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .offer-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-3px);
+            border-color: #667eea;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .offer-card.featured {
+            border-color: #4CAF50;
+            background: linear-gradient(135deg, #f8fff8 0%, #e8f5e8 100%);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4CAF50;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            font-size: 0.9rem;
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+
+        .price-estimate {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+
+        .features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .features li {
+            padding: 5px 0;
+            color: #666;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .features li:before {
+            content: "✓";
+            color: #4CAF50;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .features li.highlight {
+            color: #ff4757;
+            font-weight: 600;
+        }
+
+        .features li.highlight:before {
+            content: "🔥";
+        }
+
+        .btn-offer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-offer:hover {
+            transform: translateY(-2px);
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .disclaimer p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .error-message {
+            background: #ff4757;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .logo h1 { font-size: 1.7rem; }
+            .quiz-header h1 { font-size: 2rem; }
+            .step { padding: 30px 20px; }
+            .offers-container { grid-template-columns: 1fr; }
+            .results-content { padding: 30px 20px; }
+            .incentive-box { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Логотип -->
+        <div class="logo">
+            <h1>ThePolicy</h1>
+            <div class="domain">thepolicy.io</div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+            <div class="progress-text">
+                <span id="currentStep">1</span> of 3
+            </div>
+        </div>
+
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h1>Find Your Perfect Auto Insurance</h1>
+                <p>Compare quotes from top providers and save up to 50%</p>
+            </div>
+
+            <!-- Step 1: ZIP -->
+            <div class="step active" id="step1">
+                <div class="step-content">
+                    <h2>What's your zip code?</h2>
+                    <p>We'll find the best rates in your area</p>
+                    <div class="input-group">
+                        <input type="text" id="zipCode" placeholder="Enter your zip code" maxlength="5">
+                        <button class="btn-primary" id="zipBtn" onclick="goToStep2()" disabled>Enter 5-digit zip code</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Insurance -->
+            <div class="step" id="step2">
+                <div class="step-content">
+                    <h2>Are you currently insured?</h2>
+                    <p>This helps us find better rates for you</p>
+                    <div class="options-group">
+                        <div class="option-card" onclick="selectInsured('yes')">
+                            <div class="option-icon">✅</div>
+                            <h3>Yes, I'm insured</h3>
+                            <p>I want to compare my current rate</p>
+                        </div>
+                        <div class="option-card" onclick="selectInsured('no')">
+                            <div class="option-icon">❌</div>
+                            <h3>No, I need insurance</h3>
+                            <p>I'm looking for my first policy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Bundle -->
+            <div class="step" id="step3">
+                <div class="step-content">
+                    <h2>Bundle car + home insurance?</h2>
+                    <p>Get up to 50% discount when you bundle</p>
+                    <div class="options-group">
+                        <div class="option-card bundle-highlight" onclick="selectBundle('yes')">
+                            <div class="option-icon">🏠🚗</div>
+                            <h3>Yes, bundle both</h3>
+                            <p>Save up to 50% with bundled coverage</p>
+                            <div class="discount-badge">Best Deal!</div>
+                        </div>
+                        <div class="option-card" onclick="selectBundle('no')">
+                            <div class="option-icon">🚗</div>
+                            <h3>Car insurance only</h3>
+                            <p>Just auto insurance for now</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- РЕЗУЛЬТАТИ -->
+        <div class="quiz-container" id="resultsContainer" style="display: none; margin-top: 20px;">
+            <div class="results-content">
+                <h2>🎉 Your Best Matches</h2>
+                <p class="results-subtext">Based on your answers, here are the top-rated providers in your area</p>
+                
+                <!-- Інсентив блок -->
+                <div class="incentive-box">
+                    <h3>💡 Important: Get Your Exact Quote!</h3>
+                    <p>These are estimated rates based on your profile. <strong>Click each offer below</strong> to get your personalized quote with exact pricing for your specific vehicle, driving history, and coverage needs!</p>
+                </div>
+                
+                <div class="offers-container">
+                    <!-- GEICO with No Downpayment -->
+                    <div class="offer-card featured" onclick="openOffer('geico')">
+                        <div class="featured-badge">Most Popular</div>
+                        <div class="company-name">GEICO</div>
+                        <div class="rating">⭐⭐⭐⭐⭐ 4.9/5</div>
+                        <div class="price-estimate" data-price="76">$76/month*</div>
+                        <ul class="features">
+                            <li class="highlight">No down payment required</li>
+                            <li>15% savings for government employees</li>
+                            <li>Easy online claims process</li>
+                            <li>24/7 emergency roadside assistance</li>
+                        </ul>
+                        <button class="btn-offer">Get Your Exact Quote →</button>
+                    </div>
+
+                    <!-- Progressive -->
+                    <div class="offer-card" onclick="openOffer('progressive')">
+                        <div class="company-name">Progressive</div>
+                        <div class="rating">⭐⭐⭐⭐⭐ 4.8/5</div>
+                        <div class="price-estimate" data-price="89">$89/month*</div>
+                        <ul class="features">
+                            <li>24/7 customer support</li>
+                            <li>Mobile app discounts</li>
+                            <li>Accident forgiveness program</li>
+                            <li>Name your price tool</li>
+                        </ul>
+                        <button class="btn-offer">Get Your Exact Quote →</button>
+                    </div>
+
+                    <!-- State Farm -->
+                    <div class="offer-card" onclick="openOffer('statefarm')">
+                        <div class="company-name">State Farm</div>
+                        <div class="rating">⭐⭐⭐⭐⭐ 4.7/5</div>
+                        <div class="price-estimate" data-price="94">$94/month*</div>
+                        <ul class="features">
+                            <li>Local agent support</li>
+                            <li>Good student discounts</li>
+                            <li>Multi-policy savings</li>
+                            <li>Drive Safe & Save program</li>
+                        </ul>
+                        <button class="btn-offer">Get Your Exact Quote →</button>
+                    </div>
+
+                    <!-- Allstate -->
+                    <div class="offer-card" onclick="openOffer('allstate')">
+                        <div class="company-name">Allstate</div>
+                        <div class="rating">⭐⭐⭐⭐ 4.6/5</div>
+                        <div class="price-estimate" data-price="102">$102/month*</div>
+                        <ul class="features">
+                            <li>Drivewise rewards program</li>
+                            <li>New car replacement coverage</li>
+                            <li>Safe driving bonuses</li>
+                            <li>Claim-free rewards</li>
+                        </ul>
+                        <button class="btn-offer">Get Your Exact Quote →</button>
+                    </div>
+                </div>
+
+                <div class="disclaimer">
+                    <p>*Estimated rates based on your profile. Actual rates may vary and depend on your specific vehicle, driving record, credit score, and coverage selections. Click each offer to get your personalized quote with exact pricing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Збереження даних
+        let quizData = { zipCode: '', insured: '', bundle: '' };
+
+        // Афіліатні посилання - ЗАМІНІТЬ НА СВОЇ!
+        const affiliateLinks = {
+            progressive: 'https://www.progressive.com/?affiliate_id=YOUR_PROGRESSIVE_ID',
+            geico: 'https://www.geico.com/?affiliate_id=YOUR_GEICO_ID', 
+            statefarm: 'https://www.statefarm.com/?affiliate_id=YOUR_STATEFARM_ID',
+            allstate: 'https://www.allstate.com/?affiliate_id=YOUR_ALLSTATE_ID'
+        };
+
+        // Валідація ZIP коду для США
+        function isValidUSZipCode(zipCode) {
+            if (!/^\d{5}$/.test(zipCode)) return false;
+            
+            const zip = parseInt(zipCode);
+            
+            // Базова перевірка діапазонів ZIP кодів США
+            // 00001-99999 але деякі діапазони не використовуються
+            if (zip < 1 || zip > 99999) return false;
+            
+            // Виключаємо деякі недійсні діапазони
+            const invalidRanges = [
+                [1, 299],      // Зарезервовано
+                [213, 214],    // Не використовується  
+                [269, 269],    // Не використовується
+                [34997, 34998], // Не використовується
+                [69999, 69999], // Не використовується  
+                [80000, 80099], // Зарезервовано
+                [88000, 88999], // Зарезервовано для військових
+                [96200, 96299], // Зарезервовано
+                [96600, 96999]  // Зарезервовано
+            ];
+            
+            for (let range of invalidRanges) {
+                if (zip >= range[0] && zip <= range[1]) {
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
+        // Крок 1 → 2
+        function goToStep2() {
+            const zipCode = document.getElementById('zipCode').value;
+            
+            if (!isValidUSZipCode(zipCode)) {
+                showError('Please enter a valid US zip code');
+                return;
+            }
+            
+            quizData.zipCode = zipCode;
+            console.log('ZIP saved:', zipCode);
+            
+            // Перехід до кроку 2
+            document.getElementById('step1').classList.remove('active');
+            document.getElementById('step2').classList.add('active');
+            updateProgress(2);
+        }
+
+        // Крок 2 → 3
+        function selectInsured(value) {
+            quizData.insured = value;
+            console.log('Insurance status saved:', value);
+            
+            // Візуальний фідбек
+            document.querySelectorAll('#step2 .option-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            event.target.closest('.option-card').classList.add('selected');
+            
+            setTimeout(() => {
+                document.getElementById('step2').classList.remove('active');
+                document.getElementById('step3').classList.add('active');
+                updateProgress(3);
+            }, 800);
+        }
+
+        // Крок 3 → Результати
+        function selectBundle(value) {
+            quizData.bundle = value;
+            console.log('Bundle choice saved:', value);
+            console.log('Final quiz data:', quizData);
+            
+            // Візуальний фідбек
+            document.querySelectorAll('#step3 .option-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            event.target.closest('.option-card').classList.add('selected');
+            
+            setTimeout(() => {
+                showResults();
+            }, 800);
+        }
+
+        // Показати результати
+        function showResults() {
+            console.log('Showing results...');
+            
+            // Приховати всі кроки
+            document.getElementById('step1').classList.remove('active');
+            document.getElementById('step2').classList.remove('active'); 
+            document.getElementById('step3').classList.remove('active');
+            
+            // Показати результати
+            document.getElementById('resultsContainer').style.display = 'block';
+            updateProgress(3, true);
+            
+            // Налаштувати ціни для bundle
+            if (quizData.bundle === 'yes') {
+                applyBundleDiscount();
+            }
+            
+            // Плавна прокрутка до результатів
+            setTimeout(() => {
+                document.getElementById('resultsContainer').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            }, 100);
+        }
+
+        // Застосувати знижку bundle
+        function applyBundleDiscount() {
+            document.querySelectorAll('.price-estimate').forEach(priceEl => {
+                const originalPrice = parseInt(priceEl.dataset.price);
+                const bundlePrice = Math.round(originalPrice * 0.5);
+                priceEl.innerHTML = `<span style="text-decoration: line-through; color: #999; font-size: 1.2rem;">$${originalPrice}</span><br>$${bundlePrice}/month*`;
+            });
+            
+            // Оновити disclaimer
+            const disclaimer = document.querySelector('.disclaimer p');
+            disclaimer.textContent = '*Bundle discount applied. Individual auto rates may be higher. ' + disclaimer.textContent;
+        }
+
+        // Оновити прогрес
+        function updateProgress(step, completed = false) {
+            const progress = completed ? 100 : (step / 3) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('currentStep').textContent = step;
+        }
+
+        // Відкрити афіліатне посилання
+        function openOffer(company) {
+            console.log('Opening offer for:', company, quizData);
+            
+            // Тут можна додати трекінг аналітики
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'offer_click', {
+                    company: company,
+                    zip_code: quizData.zipCode,
+                    insured: quizData.insured,
+                    bundle: quizData.bundle
+                });
+            }
+            
+            window.open(affiliateLinks[company], '_blank');
+        }
+
+        // Показати помилку
+        function showError(message) {
+            const existing = document.querySelector('.error-message');
+            if (existing) existing.remove();
+            
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.textContent = message;
+            
+            document.querySelector('.input-group').appendChild(errorDiv);
+            setTimeout(() => errorDiv.remove(), 3000);
+        }
+
+        // Валідація ZIP коду (live typing)
+        document.getElementById('zipCode').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '').substr(0, 5);
+            e.target.value = value;
+            
+            const button = document.getElementById('zipBtn');
+            if (value.length === 5) {
+                if (isValidUSZipCode(value)) {
+                    button.disabled = false;
+                    button.textContent = 'Continue';
+                    e.target.style.borderColor = '#4CAF50';
+                } else {
+                    button.disabled = true;
+                    button.textContent = 'Invalid zip code';
+                    e.target.style.borderColor = '#ff4757';
+                }
+            } else {
+                button.disabled = true;
+                button.textContent = 'Enter 5-digit zip code';
+                e.target.style.borderColor = '#e0e0e0';
+            }
+        });
+
+        // Enter key підтримка
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && document.getElementById('step1').classList.contains('active')) {
+                goToStep2();
+            }
+        });
+
+        // Ініціалізація
+        setTimeout(() => {
+            document.getElementById('zipCode').focus();
+        }, 300);
+
+        console.log('ThePolicy quiz initialized');
+    </script>
+</body>
+</html>
