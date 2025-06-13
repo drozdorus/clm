@@ -37,11 +37,56 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .logo .domain {
-            color: rgba(255,255,255,0.8);
-            font-size: 0.9rem;
+        .logo .motto {
+            color: rgba(255,255,255,0.9);
+            font-size: 1rem;
             font-weight: 400;
             margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* Cookie Notification */
+        .cookie-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-size: 0.9rem;
+            z-index: 9999;
+            display: none;
+            animation: slideUp 0.3s ease;
+        }
+
+        .cookie-notification.show {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .cookie-notification p {
+            margin: 0;
+            flex: 1;
+        }
+
+        .cookie-notification button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .progress-container {
@@ -128,6 +173,7 @@
             border-radius: 25px;
             margin-bottom: 20px;
             text-align: center;
+            transition: border-color 0.3s ease;
         }
 
         .input-group input:focus {
@@ -246,6 +292,38 @@
             margin-bottom: 20px;
         }
 
+        /* Summary Box */
+        .results-summary {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #dee2e6;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .results-summary h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .summary-details {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .summary-item {
+            background: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #555;
+            border: 1px solid #ddd;
+        }
+
         /* Інсентив бокс */
         .incentive-box {
             background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
@@ -327,6 +405,12 @@
             font-size: 2rem;
             font-weight: 700;
             color: #4CAF50;
+            margin-bottom: 5px;
+        }
+
+        .price-note {
+            font-size: 0.8rem;
+            color: #999;
             margin-bottom: 15px;
         }
 
@@ -391,6 +475,29 @@
             margin: 0;
         }
 
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .footer p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.8rem;
+            margin: 5px 0;
+        }
+
+        .footer a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
         .error-message {
             background: #ff4757;
             color: white;
@@ -408,15 +515,31 @@
             .offers-container { grid-template-columns: 1fr; }
             .results-content { padding: 30px 20px; }
             .incentive-box { padding: 15px; }
+            .cookie-notification { 
+                left: 10px; 
+                right: 10px; 
+                flex-direction: column; 
+                gap: 10px; 
+            }
+            .summary-details { 
+                flex-direction: column; 
+                gap: 10px; 
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Cookie Notification -->
+    <div class="cookie-notification" id="cookieNotification">
+        <p>We use cookies to save your quiz progress and improve your experience.</p>
+        <button onclick="acceptCookies()">OK</button>
+    </div>
+
     <div class="container">
         <!-- Логотип -->
         <div class="logo">
             <h1>ThePolicy</h1>
-            <div class="domain">thepolicy.io</div>
+            <div class="motto">You deserve better policies</div>
         </div>
 
         <div class="progress-container">
@@ -492,6 +615,16 @@
                 <h2>🎉 Your Best Matches</h2>
                 <p class="results-subtext">Based on your answers, here are the top-rated providers in your area</p>
                 
+                <!-- Results Summary -->
+                <div class="results-summary">
+                    <h3>Your Selection Summary</h3>
+                    <div class="summary-details">
+                        <div class="summary-item" id="zipSummary">ZIP: ----</div>
+                        <div class="summary-item" id="insuranceSummary">Insurance: ----</div>
+                        <div class="summary-item" id="bundleSummary">Coverage: ----</div>
+                    </div>
+                </div>
+                
                 <!-- Інсентив блок -->
                 <div class="incentive-box">
                     <h3>💡 Important: Get Your Exact Quote!</h3>
@@ -504,7 +637,8 @@
                         <div class="featured-badge">Most Popular</div>
                         <div class="company-name">GEICO</div>
                         <div class="rating">⭐⭐⭐⭐⭐ 4.9/5</div>
-                        <div class="price-estimate" data-price="76">$76/month*</div>
+                        <div class="price-estimate" data-auto="35" data-bundle="55">$35/month</div>
+                        <div class="price-note">*Prices start from</div>
                         <ul class="features">
                             <li class="highlight">No down payment required</li>
                             <li>15% savings for government employees</li>
@@ -518,7 +652,8 @@
                     <div class="offer-card" onclick="openOffer('progressive')">
                         <div class="company-name">Progressive</div>
                         <div class="rating">⭐⭐⭐⭐⭐ 4.8/5</div>
-                        <div class="price-estimate" data-price="89">$89/month*</div>
+                        <div class="price-estimate" data-auto="39" data-bundle="59">$39/month</div>
+                        <div class="price-note">*Avg. expenditure</div>
                         <ul class="features">
                             <li>24/7 customer support</li>
                             <li>Mobile app discounts</li>
@@ -532,7 +667,8 @@
                     <div class="offer-card" onclick="openOffer('statefarm')">
                         <div class="company-name">State Farm</div>
                         <div class="rating">⭐⭐⭐⭐⭐ 4.7/5</div>
-                        <div class="price-estimate" data-price="94">$94/month*</div>
+                        <div class="price-estimate" data-auto="42" data-bundle="63">$42/month</div>
+                        <div class="price-note">*Starting price</div>
                         <ul class="features">
                             <li>Local agent support</li>
                             <li>Good student discounts</li>
@@ -546,7 +682,8 @@
                     <div class="offer-card" onclick="openOffer('allstate')">
                         <div class="company-name">Allstate</div>
                         <div class="rating">⭐⭐⭐⭐ 4.6/5</div>
-                        <div class="price-estimate" data-price="102">$102/month*</div>
+                        <div class="price-estimate" data-auto="45" data-bundle="67">$45/month</div>
+                        <div class="price-note">*Estimated cost</div>
                         <ul class="features">
                             <li>Drivewise rewards program</li>
                             <li>New car replacement coverage</li>
@@ -562,11 +699,17 @@
                 </div>
             </div>
         </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><a href="#cookie-policy">Cookie Policy</a> | By continuing to use this site, you agree to our use of cookies.</p>
+            <p>&copy; 2025 ThePolicy. Connecting you with better insurance options.</p>
+        </div>
     </div>
 
     <script>
         // Збереження даних
-        let quizData = { zipCode: '', insured: '', bundle: '' };
+        let quizData = { zipCode: '', insured: '', bundle: '', currentStep: 1 };
 
         // Афіліатні посилання - ЗАМІНІТЬ НА СВОЇ!
         const affiliateLinks = {
@@ -576,33 +719,91 @@
             allstate: 'https://www.allstate.com/?affiliate_id=YOUR_ALLSTATE_ID'
         };
 
+        // Cookie функції
+        function setCookie(name, value, days) {
+            const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+            document.cookie = `${name}=${encodeURIComponent(value)};expires=${expires};path=/`;
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i].trim();
+                if (c.indexOf(nameEQ) == 0) {
+                    return decodeURIComponent(c.substring(nameEQ.length));
+                }
+            }
+            return null;
+        }
+
+        // Збереження прогресу
+        function saveProgress() {
+            setCookie('quizProgress', JSON.stringify(quizData), 7); // 7 днів
+        }
+
+        // Відновлення прогресу
+        function restoreProgress() {
+            const saved = getCookie('quizProgress');
+            if (saved) {
+                try {
+                    const savedData = JSON.parse(saved);
+                    quizData = {...quizData, ...savedData};
+                    
+                    // Відновити поля
+                    if (quizData.zipCode) {
+                        document.getElementById('zipCode').value = quizData.zipCode;
+                        document.getElementById('zipBtn').disabled = false;
+                        document.getElementById('zipBtn').textContent = 'Continue';
+                    }
+                    
+                    // Відновити крок
+                    if (quizData.currentStep > 1) {
+                        document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+                        
+                        if (quizData.currentStep === 4) { // Результати
+                            showResults();
+                        } else {
+                            document.getElementById('step' + quizData.currentStep).classList.add('active');
+                            updateProgress(quizData.currentStep);
+                        }
+                    }
+                    
+                    console.log('Progress restored:', quizData);
+                } catch (e) {
+                    console.log('Error restoring progress:', e);
+                }
+            }
+        }
+
+        // Cookie notification
+        function showCookieNotification() {
+            const accepted = getCookie('cookiesAccepted');
+            if (!accepted) {
+                document.getElementById('cookieNotification').classList.add('show');
+            }
+        }
+
+        function acceptCookies() {
+            setCookie('cookiesAccepted', 'true', 365);
+            document.getElementById('cookieNotification').classList.remove('show');
+        }
+
         // Валідація ZIP коду для США
         function isValidUSZipCode(zipCode) {
             if (!/^\d{5}$/.test(zipCode)) return false;
             
             const zip = parseInt(zipCode);
-            
-            // Базова перевірка діапазонів ZIP кодів США
-            // 00001-99999 але деякі діапазони не використовуються
             if (zip < 1 || zip > 99999) return false;
             
-            // Виключаємо деякі недійсні діапазони
             const invalidRanges = [
-                [1, 299],      // Зарезервовано
-                [213, 214],    // Не використовується  
-                [269, 269],    // Не використовується
-                [34997, 34998], // Не використовується
-                [69999, 69999], // Не використовується  
-                [80000, 80099], // Зарезервовано
-                [88000, 88999], // Зарезервовано для військових
-                [96200, 96299], // Зарезервовано
-                [96600, 96999]  // Зарезервовано
+                [1, 299], [213, 214], [269, 269], [34997, 34998], 
+                [69999, 69999], [80000, 80099], [88000, 88999], 
+                [96200, 96299], [96600, 96999]
             ];
             
             for (let range of invalidRanges) {
-                if (zip >= range[0] && zip <= range[1]) {
-                    return false;
-                }
+                if (zip >= range[0] && zip <= range[1]) return false;
             }
             
             return true;
@@ -618,9 +819,9 @@
             }
             
             quizData.zipCode = zipCode;
-            console.log('ZIP saved:', zipCode);
+            quizData.currentStep = 2;
+            saveProgress();
             
-            // Перехід до кроку 2
             document.getElementById('step1').classList.remove('active');
             document.getElementById('step2').classList.add('active');
             updateProgress(2);
@@ -629,9 +830,9 @@
         // Крок 2 → 3
         function selectInsured(value) {
             quizData.insured = value;
-            console.log('Insurance status saved:', value);
+            quizData.currentStep = 3;
+            saveProgress();
             
-            // Візуальний фідбек
             document.querySelectorAll('#step2 .option-card').forEach(card => {
                 card.classList.remove('selected');
             });
@@ -647,10 +848,9 @@
         // Крок 3 → Результати
         function selectBundle(value) {
             quizData.bundle = value;
-            console.log('Bundle choice saved:', value);
-            console.log('Final quiz data:', quizData);
+            quizData.currentStep = 4;
+            saveProgress();
             
-            // Візуальний фідбек
             document.querySelectorAll('#step3 .option-card').forEach(card => {
                 card.classList.remove('selected');
             });
@@ -665,21 +865,16 @@
         function showResults() {
             console.log('Showing results...');
             
-            // Приховати всі кроки
-            document.getElementById('step1').classList.remove('active');
-            document.getElementById('step2').classList.remove('active'); 
-            document.getElementById('step3').classList.remove('active');
-            
-            // Показати результати
+            document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
             document.getElementById('resultsContainer').style.display = 'block';
             updateProgress(3, true);
             
-            // Налаштувати ціни для bundle
-            if (quizData.bundle === 'yes') {
-                applyBundleDiscount();
-            }
+            // Оновити summary
+            updateResultsSummary();
             
-            // Плавна прокрутка до результатів
+            // Оновити ціни
+            updatePricing();
+            
             setTimeout(() => {
                 document.getElementById('resultsContainer').scrollIntoView({ 
                     behavior: 'smooth' 
@@ -687,17 +882,32 @@
             }, 100);
         }
 
-        // Застосувати знижку bundle
-        function applyBundleDiscount() {
-            document.querySelectorAll('.price-estimate').forEach(priceEl => {
-                const originalPrice = parseInt(priceEl.dataset.price);
-                const bundlePrice = Math.round(originalPrice * 0.5);
-                priceEl.innerHTML = `<span style="text-decoration: line-through; color: #999; font-size: 1.2rem;">$${originalPrice}</span><br>$${bundlePrice}/month*`;
-            });
+        // Оновити summary результатів
+        function updateResultsSummary() {
+            document.getElementById('zipSummary').textContent = `ZIP: ${quizData.zipCode}`;
+            document.getElementById('insuranceSummary').textContent = `Currently insured: ${quizData.insured === 'yes' ? 'Yes' : 'No'}`;
             
-            // Оновити disclaimer
-            const disclaimer = document.querySelector('.disclaimer p');
-            disclaimer.textContent = '*Bundle discount applied. Individual auto rates may be higher. ' + disclaimer.textContent;
+            if (quizData.bundle === 'yes') {
+                document.getElementById('bundleSummary').textContent = 'Coverage: Car + Home Bundle';
+                document.getElementById('bundleSummary').style.background = '#e8f5e8';
+                document.getElementById('bundleSummary').style.color = '#2e7d32';
+            } else {
+                document.getElementById('bundleSummary').textContent = 'Coverage: Auto Insurance Only';
+            }
+        }
+
+        // Оновити ціни
+        function updatePricing() {
+            document.querySelectorAll('.price-estimate').forEach(priceEl => {
+                const autoPrice = parseInt(priceEl.dataset.auto);
+                const bundlePrice = parseInt(priceEl.dataset.bundle);
+                
+                if (quizData.bundle === 'yes') {
+                    priceEl.textContent = `$${bundlePrice}/month`;
+                } else {
+                    priceEl.textContent = `$${autoPrice}/month`;
+                }
+            });
         }
 
         // Оновити прогрес
@@ -711,7 +921,6 @@
         function openOffer(company) {
             console.log('Opening offer for:', company, quizData);
             
-            // Тут можна додати трекінг аналітики
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'offer_click', {
                     company: company,
@@ -768,11 +977,18 @@
         });
 
         // Ініціалізація
-        setTimeout(() => {
-            document.getElementById('zipCode').focus();
-        }, 300);
+        document.addEventListener('DOMContentLoaded', function() {
+            showCookieNotification();
+            restoreProgress();
+            
+            setTimeout(() => {
+                if (document.getElementById('step1').classList.contains('active')) {
+                    document.getElementById('zipCode').focus();
+                }
+            }, 300);
+        });
 
-        console.log('ThePolicy quiz initialized');
+        console.log('ThePolicy quiz initialized with progress saving');
     </script>
 </body>
 </html>
