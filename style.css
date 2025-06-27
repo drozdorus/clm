@@ -517,14 +517,13 @@ h1 {
   font-style: italic;
 }
 
-/* Conferences Section */
-
-
+/* Conferences Section - NEW ADAPTIVE LAYOUT */
 .conferences-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 40px;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -535,10 +534,13 @@ h1 {
   text-align: center;
   transition: all 0.3s ease;
   border: 1px solid rgba(0, 255, 127, 0.1);
+  flex: 0 1 280px;
+  min-width: 280px;
+  max-width: 320px;
 }
 
 .conference-card:hover {
-  transform: translateY(-5px)
+  transform: translateY(-5px);
   border-color: rgba(0, 255, 127, 0.3);
   box-shadow: 0 15px 30px rgba(0, 255, 127, 0.1);
 }
@@ -604,6 +606,29 @@ h1 {
 .conference-link:hover {
   color: #00FF7F;
   text-decoration: underline;
+}
+
+/* Adaptive breakpoints for conferences */
+@media (min-width: 1024px) {
+  /* For 4+ items: optimize for 2x2 or 3+2 layout */
+  .conferences-grid {
+    max-width: 1000px;
+  }
+  
+  .conference-card {
+    flex: 0 1 300px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* For tablets: 2 per row max */
+  .conferences-grid {
+    max-width: 700px;
+  }
+  
+  .conference-card {
+    flex: 0 1 300px;
+  }
 }
 
 /* Contact Section */
@@ -828,8 +853,15 @@ h1 {
   }
 
   .conferences-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
     gap: 30px;
+  }
+  
+  .conference-card {
+    flex: none;
+    width: 100%;
+    max-width: 350px;
   }
 
   .contact-content {
