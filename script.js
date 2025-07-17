@@ -146,9 +146,9 @@ window.addEventListener('scroll', function() {
   if (scrolled <= fadeStart) {
     canvas.style.opacity = '1';
   } else if (scrolled >= fadeEnd) {
-    canvas.style.opacity = '0.1';
+    canvas.style.opacity = '0';
   } else {
-    const opacity = 1 - ((scrolled - fadeStart) / (fadeEnd - fadeStart)) * 0.9;
+    const opacity = 1 - ((scrolled - fadeStart) / (fadeEnd - fadeStart));
     canvas.style.opacity = opacity.toString();
   }
 });
