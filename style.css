@@ -95,6 +95,11 @@
   --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.15);
   --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.2);
   --shadow-glow: 0 0 30px rgba(255, 215, 0, 0.3);
+  
+  /* Content Width System */
+  --content-width-main: 1000px;
+  --content-width-narrow: 900px;
+  --content-width-wide: 1100px;
 }
 
 /* Reset and base styles */
@@ -161,7 +166,7 @@ p {
 
 /* Container */
 .container {
-  max-width: 1200px;
+  max-width: var(--content-width-wide);
   margin: 0 auto;
   padding: 0 var(--space-sm);
 }
@@ -380,7 +385,7 @@ p {
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: var(--content-width-main);
   animation: fadeInUp 1s ease;
 }
 
@@ -459,18 +464,19 @@ p {
   font-size: var(--text-lg);
   color: var(--color-text-tertiary);
   margin-bottom: var(--space-2xl);
-  max-width: 600px;
+  max-width: var(--content-width-main);
   margin-left: auto;
   margin-right: auto;
 }
 
 /* About Section */
-.about-layout {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 80px;
-  align-items: start;
-  margin-bottom: 80px;
+.about-content {
+  max-width: var(--content-width-main);
+  margin: 0 auto var(--space-2xl);
+}
+
+.about-text-section {
+  text-align: left;
 }
 
 .hero-badge {
@@ -511,43 +517,60 @@ p {
   font-weight: 600;
 }
 
-.approach-title {
+/* Methodology Section - Table like Services but Dark */
+.methodology {
+  max-width: var(--content-width-main);
+  margin: 0 auto var(--space-2xl);
+  text-align: center;
+}
+
+.methodology-title {
   font-size: var(--text-xl);
   font-weight: 600;
   margin-bottom: var(--space-lg);
   color: var(--color-primary);
 }
 
-.approach-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
+.methodology-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  overflow: hidden;
 }
 
-.approach-item {
-  padding: 0 0 var(--space-sm) 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.methodology-item {
+  background: var(--color-background);
+  padding: var(--space-xl) var(--space-lg);
+  transition: all var(--transition-base);
+  border: none;
 }
 
-.approach-item:last-child {
-  border-bottom: none;
+.methodology-item:hover {
+  background: var(--color-surface);
 }
 
-.approach-label {
-  font-size: var(--text-base);
+.methodology-label {
+  font-size: var(--text-lg);
   font-weight: 600;
+  margin-bottom: var(--space-sm);
   color: var(--color-text-primary);
-  margin-bottom: var(--space-xs);
 }
 
-.approach-desc {
-  font-size: var(--text-sm);
+.methodology-desc {
   color: var(--color-text-tertiary);
-  line-height: 1.5;
+  line-height: 1.6;
+  font-size: var(--text-base);
+  min-height: 3.2em;
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
 }
 
 .traffic-sources {
-  max-width: 800px;
+  max-width: var(--content-width-main);
   margin: 0 auto;
   text-align: center;
 }
@@ -563,7 +586,7 @@ p {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
-  max-width: 800px;
+  max-width: var(--content-width-main);
   margin: 0 auto;
 }
 
@@ -652,6 +675,8 @@ p {
   overflow: hidden;
   position: relative;
   z-index: 1;
+  max-width: var(--content-width-main);
+  margin: 0 auto;
 }
 
 /* Service Cards - Consistent Hover */
@@ -701,7 +726,7 @@ p {
 
 .approach {
   margin-top: var(--space-2xl);
-  max-width: 800px;
+  max-width: var(--content-width-main);
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -720,26 +745,30 @@ p {
   color: rgba(26, 26, 26, 0.7);
 }
 
-/* Conferences Section - Consistent Cards */
+/* Conferences Section - Wider cards, smaller gaps */
 .conferences-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--space-xl);
-  max-width: 1200px;
+  gap: var(--space-lg);
+  max-width: var(--content-width-main);
   margin: 0 auto;
 }
 
 .conference-card {
   background: var(--color-surface);
-  padding: var(--space-xl);
+  padding: var(--space-lg);
   border-radius: var(--radius-md);
   text-align: center;
   transition: all var(--transition-base);
   border: 1px solid rgba(0, 255, 127, 0.1);
-  flex: 0 1 280px;
-  min-width: 280px;
-  max-width: 320px;
+  flex: 0 1 320px;
+  min-width: 320px;
+  max-width: 360px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .conference-card:hover {
@@ -793,24 +822,36 @@ p {
   font-weight: 600;
   margin-bottom: 10px;
   color: var(--color-text-primary);
+  min-height: 2.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .conference-location {
   font-size: var(--text-base);
   color: var(--color-text-tertiary);
   margin-bottom: var(--space-md);
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Conference Links - Consistent with other links */
+/* Conference Links - Optimized for long URLs */
 .conference-link {
   display: inline-block;
   color: var(--color-primary);
   text-decoration: none;
   font-weight: 500;
-  font-size: var(--text-base);
+  font-size: 13px;
   transition: all var(--transition-base);
-  padding: var(--space-xs);
+  padding: 4px 6px;
   border-radius: var(--radius-sm);
+  word-break: break-all;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .conference-link:hover {
@@ -824,7 +865,7 @@ p {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-2xl);
-  max-width: 1000px;
+  max-width: var(--content-width-main);
   margin: 0 auto;
 }
 
@@ -1046,11 +1087,12 @@ p {
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .conferences-grid {
-    max-width: 700px;
+    max-width: 800px;
   }
   
   .conference-card {
-    flex: 0 1 300px;
+    flex: 0 1 340px;
+    max-width: 360px;
   }
 }
 
@@ -1107,7 +1149,9 @@ p {
   .conference-card {
     flex: none;
     width: 100%;
-    max-width: 350px;
+    max-width: 380px;
+    min-width: auto;
+    padding: var(--space-lg) var(--space-sm);
   }
 
   .contact-content {
@@ -1127,16 +1171,24 @@ p {
   .traffic-sources-grid {
     grid-template-columns: 1fr;
     gap: var(--space-sm);
-    max-width: 300px;
+    max-width: var(--content-width-main);
   }
   
   .traffic-source {
     padding: var(--space-sm) 15px;
   }
   
-  .about-layout {
+  .about-text-section {
+    text-align: left;
+  }
+  
+  .methodology-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-xl);
+    gap: 1px;
+  }
+  
+  .methodology-item {
+    padding: var(--space-lg) var(--space-sm);
   }
   
   .hero-badge {
@@ -1159,7 +1211,8 @@ p {
   }
 
   .conference-card {
-    padding: var(--space-lg) var(--space-sm);
+    padding: var(--space-md) var(--space-sm);
+    min-height: 280px;
   }
 
   .nav {
