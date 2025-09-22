@@ -237,53 +237,82 @@
     </div>
   </section>
 
-  <!-- Conferences Section -->
+  <!-- Events Section -->
   <section id="conferences" class="section conferences">
     <div class="container">
       <h2 class="section-title">Meet Our Team</h2>
       <p class="section-subtitle">Connect with us at these upcoming industry events</p>
       
-      <div class="conferences-grid">
+      <!-- Upcoming Events -->
+      <div class="events-section">
+        <h3 class="events-section-title">Upcoming Events</h3>
+        <div class="conferences-grid">
+          
+          
+          <div class="conference-card">
+            <div class="conference-logo-wrapper">
+              <img src="img/ws-logo.png" alt="Web Summit" />
+            </div>
+            <div class="conference-date">10-13 Nov 2025</div>
+            <h4 class="conference-name">Web Summit</h4>
+            <p class="conference-location">Lisbon, Portugal</p>
+            <a href="https://websummit.com/" target="_blank" class="conference-link">websummit.com</a>
+          </div>
+          
+          <div class="conference-card">
+            <div class="conference-logo-wrapper">
+              <img src="img/asw-logo.png" alt="Affiliate Summit" />
+            </div>
+            <div class="conference-date">12-14 Jan 2026</div>
+            <h4 class="conference-name">Affiliate Summit West</h4>
+            <p class="conference-location">Las Vegas, US</p>
+            <a href="https://affiliatesummit.com/west" target="_blank" class="conference-link">affiliatesummit.com</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Past Events -->
+      <div class="past-events-section">
+        <button class="past-events-toggle" id="pastEventsToggle">
+          <span>Past Events</span>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
         
+        <div class="past-events-content" id="pastEventsContent">
+          <div class="past-events-grid">
+            <div class="past-conference-card">
+              <div class="past-conference-date">Sep 2025</div>
+              <h4 class="past-conference-name">SBC</h4>
+              <p class="past-conference-location">Lisbon, Portugal</p>
+            </div>
 
-        <!--<div class="conference-card">
-          <div>
-            <img src="img/ag-logo.png" />
-          </div>
-          <div class="conference-date">29 Aug 2025</div>
-          <h3 class="conference-name">AppGala</h3>
-          <p class="conference-location">Warsaw, Poland</p>
-          <a href="https://appgala.events/lite-warsaw-aug-2025/" target="_blank" class="conference-link">appgala.events</a>
-        </div>-->
+            <div class="past-conference-card">
+              <div class="past-conference-date">Sep 2025</div>
+              <h4 class="past-conference-name">Affiliate World Europe</h4>
+              <p class="past-conference-location">Budapest, Hungary</p>
+            </div>
+            
+            <div class="past-conference-card">
+              <div class="past-conference-date">Aug 2025</div>
+              <h4 class="past-conference-name">Affiliate Summit East</h4>
+              <p class="past-conference-location">New York, US</p>
+            </div>
+            
+            <div class="past-conference-card">
+              <div class="past-conference-date">Jul 2024</div>
+              <h4 class="past-conference-name">Affiliate Takeover</h4>
+              <p class="past-conference-location">Barcelona, Spain</p>
+            </div>
 
-        <div class="conference-card">
-          <div>
-            <img src="img/aw-logo.png" />
+            <div class="past-conference-card">
+              <div class="past-conference-date">Apr 2025</div>
+              <h4 class="past-conference-name">AppGala</h4>
+              <p class="past-conference-location">Warsaw, Poland</p>
+            </div>
           </div>
-          <div class="conference-date">4-5 Sep 2025</div>
-          <h3 class="conference-name">Affiliate World Europe</h3>
-          <p class="conference-location">Budapest, Hungary</p>
-          <a href="https://affiliateworldconferences.com/europe" target="_blank" class="conference-link">affiliateworldconferences.com</a>
         </div>
-        <div class="conference-card">
-          <div>
-            <img src="img/ws-logo.png" />
-          </div>
-          <div class="conference-date">10-13 Nov 2025</div>
-          <h3 class="conference-name">Web Summit</h3>
-          <p class="conference-location">Lisbon, Portugal</p>
-          <a href="https://websummit.com/" target="_blank" class="conference-link">websummit.com</a>
-        </div>
-        <div class="conference-card">
-          <div>
-            <img src="img/asw-logo.png" />
-          </div>
-          <div class="conference-date">12-14 Jan 2026</div>
-          <h3 class="conference-name">Affiliate Summit West</h3>
-          <p class="conference-location">Las Vegas, US</p>
-          <a href="https://affiliatesummit.com/west" target="_blank" class="conference-link">affiliatesummit.com</a>
-        </div>
-
       </div>
     </div>
   </section>

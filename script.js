@@ -405,4 +405,22 @@ document.addEventListener('DOMContentLoaded', function() {
       closeMobileMenu();
     }
   });
+  
+  // Past events toggle functionality
+  const pastEventsToggle = document.getElementById('pastEventsToggle');
+  const pastEventsContent = document.getElementById('pastEventsContent');
+  
+  if (pastEventsToggle && pastEventsContent) {
+    pastEventsToggle.addEventListener('click', function() {
+      const isActive = pastEventsContent.classList.contains('active');
+      
+      if (isActive) {
+        pastEventsContent.classList.remove('active');
+        pastEventsToggle.classList.remove('active');
+      } else {
+        pastEventsContent.classList.add('active');
+        pastEventsToggle.classList.add('active');
+      }
+    });
+  }
 });
