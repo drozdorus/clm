@@ -30,6 +30,8 @@
   <meta property="twitter:image" content="https://calma.io/img/metaimg.png">
   
   <link rel="stylesheet" href="style.css">
+  <!-- Team section styles — remove this line to disable -->
+  <link rel="stylesheet" href="team.css">
 </head>
 <body>
   <canvas id="waveCanvas"></canvas>
@@ -45,6 +47,7 @@
         <nav class="nav">
           <a href="#about" class="nav-link">About</a>
           <a href="#services" class="nav-link">Services</a>
+          <a href="#team" class="nav-link">Team</a>
           <a href="#conferences" class="nav-link">Events</a>
           <a href="#contact" class="nav-link">Contact</a>
           <a href="https://www.linkedin.com/company/calma-io/" target="_blank" class="social-link" aria-label="LinkedIn">
@@ -74,6 +77,7 @@
     <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
     <a href="#about" class="nav-link" onclick="closeMobileMenu()">About</a>
     <a href="#services" class="nav-link" onclick="closeMobileMenu()">Services</a>
+    <a href="#team" class="nav-link" onclick="closeMobileMenu()">Team</a>
     <a href="#conferences" class="nav-link" onclick="closeMobileMenu()">Events</a>
     <a href="#contact" class="nav-link" onclick="closeMobileMenu()">Contact</a>
     <a href="https://www.linkedin.com/company/calma-io/" target="_blank" class="social-link">
@@ -166,7 +170,7 @@
   </section>
 
   <!-- Services -->
-  <section id="services" class="section services inverted">
+  <section id="services" class="section services">
     <div class="container">
       <div class="services-header">
         <h2 class="section-title">What We Do</h2>
@@ -205,6 +209,177 @@
       </div>
     </div>
   </section>
+
+  <!-- ========== TEAM SECTION START ========== -->
+  <!-- To remove: delete everything between TEAM SECTION START/END,
+       remove the <link> to team.css in <head>,
+       and remove the team.js <script> before </body> -->
+  <section id="team" class="section team">
+    <div class="container">
+      <h2 class="section-title">The Team</h2>
+      <p class="section-subtitle">The people behind the leads</p>
+
+      <div class="team-carousel">
+        <div class="team-track" id="teamTrack">
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FFD700"/><stop offset="100%" stop-color="#FFA500"/></linearGradient></defs>
+                <rect width="260" height="260" fill="url(#g1)"/>
+                <text x="130" y="145" text-anchor="middle" fill="#0a0a0a" font-family="Geologica,sans-serif" font-size="72" font-weight="700">R</text>
+              </svg>
+            </div>
+            <div class="team-info">
+              <div class="team-name">Rus</div>
+              <div class="team-role">Chaos Coordinator-in-Chief</div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00FF7F"/><stop offset="100%" stop-color="#00CED1"/></linearGradient></defs>
+                <rect width="260" height="260" fill="url(#g2)"/>
+                <text x="130" y="145" text-anchor="middle" fill="#0a0a0a" font-family="Geologica,sans-serif" font-size="72" font-weight="700">Y</text>
+              </svg>
+            </div>
+            <div class="team-info">
+              <div class="team-name">Yehor</div>
+              <div class="team-role">Sleepless Bizdev Machine</div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7B68EE"/><stop offset="100%" stop-color="#DA70D6"/></linearGradient></defs>
+                <rect width="260" height="260" fill="url(#g3)"/>
+                <text x="130" y="145" text-anchor="middle" fill="#0a0a0a" font-family="Geologica,sans-serif" font-size="72" font-weight="700">A</text>
+              </svg>
+            </div>
+            <div class="team-info">
+              <div class="team-name">Artur</div>
+              <div class="team-role">Traffic Tamer</div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF6347"/><stop offset="100%" stop-color="#FF4500"/></linearGradient></defs>
+                <rect width="260" height="260" fill="url(#g4)"/>
+                <text x="130" y="145" text-anchor="middle" fill="#0a0a0a" font-family="Geologica,sans-serif" font-size="72" font-weight="700">Z</text>
+              </svg>
+            </div>
+            <div class="team-info">
+              <div class="team-name">Zakharii</div>
+              <div class="team-role">Creative Storm Starter</div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="g5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF69B4"/><stop offset="100%" stop-color="#FF1493"/></linearGradient></defs>
+                <rect width="260" height="260" fill="url(#g5)"/>
+                <text x="130" y="145" text-anchor="middle" fill="#0a0a0a" font-family="Geologica,sans-serif" font-size="72" font-weight="700">A</text>
+              </svg>
+            </div>
+            <div class="team-info">
+              <div class="team-name">Anastasiia</div>
+              <div class="team-role">Process Ninja</div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="g6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1E90FF"/><stop offset="100%" stop-color="#00BFFF"/></linearGradient></defs>
+                <rect width="260" height="260" fill="url(#g6)"/>
+                <text x="130" y="145" text-anchor="middle" fill="#0a0a0a" font-family="Geologica,sans-serif" font-size="72" font-weight="700">V</text>
+              </svg>
+            </div>
+            <div class="team-info">
+              <div class="team-name">Vita</div>
+              <div class="team-role">Ads Warrior</div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="g10" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4169E1"/><stop offset="100%" stop-color="#6A5ACD"/></linearGradient></defs>
+                <rect width="260" height="260" fill="url(#g10)"/>
+                <text x="130" y="145" text-anchor="middle" fill="#0a0a0a" font-family="Geologica,sans-serif" font-size="72" font-weight="700">V</text>
+              </svg>
+            </div>
+            <div class="team-info">
+              <div class="team-name">Valer</div>
+              <div class="team-role">Code Psychic</div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="g7" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F0E68C"/><stop offset="100%" stop-color="#BDB76B"/></linearGradient></defs>
+                <rect width="260" height="260" fill="url(#g7)"/>
+                <text x="130" y="145" text-anchor="middle" fill="#0a0a0a" font-family="Geologica,sans-serif" font-size="72" font-weight="700">L</text>
+              </svg>
+            </div>
+            <div class="team-info">
+              <div class="team-name">Lisa</div>
+              <div class="team-role">Footage Magician</div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="g8" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#20B2AA"/><stop offset="100%" stop-color="#3CB371"/></linearGradient></defs>
+                <rect width="260" height="260" fill="url(#g8)"/>
+                <text x="130" y="145" text-anchor="middle" fill="#0a0a0a" font-family="Geologica,sans-serif" font-size="72" font-weight="700">A</text>
+              </svg>
+            </div>
+            <div class="team-info">
+              <div class="team-name">Alex</div>
+              <div class="team-role">Pixel Perfectionist</div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar">
+              <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="g9" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#DDA0DD"/><stop offset="100%" stop-color="#9370DB"/></linearGradient></defs>
+                <rect width="260" height="260" fill="url(#g9)"/>
+                <text x="130" y="145" text-anchor="middle" fill="#0a0a0a" font-family="Geologica,sans-serif" font-size="72" font-weight="700">J</text>
+              </svg>
+            </div>
+            <div class="team-info">
+              <div class="team-name">Julia</div>
+              <div class="team-role">Tax Whisperer</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Navigation -->
+        <div class="team-nav">
+          <button class="team-nav-btn" id="teamPrev" aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button class="team-nav-btn" id="teamNext" aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+
+        <!-- Progress dots -->
+        <div class="team-dots" id="teamDots"></div>
+      </div>
+    </div>
+  </section>
+  <!-- ========== TEAM SECTION END ========== -->
 
   <!-- Events -->
   <section id="conferences" class="section conferences">
@@ -358,7 +533,7 @@
           <img src="./img/logo.svg" height="12" alt="Calma">
         </div>
         <div class="footer-text">
-          © 2025 Calma / <a href="./privacy/" target="_blank" style="color:rgba(255, 255, 255, 0.6);text-decoration:none;">Privacy Policy</a>
+          © 2026 Calma / <a href="./privacy/" target="_blank" style="color:rgba(255, 255, 255, 0.6);text-decoration:none;">Privacy Policy</a>
         </div>
         <div class="footer-social">
           <a href="https://www.linkedin.com/company/calma-io/" target="_blank" class="footer-linkedin" aria-label="LinkedIn">
@@ -372,5 +547,7 @@
   </footer>
 
   <script src="script.js"></script>
+  <!-- Team section script — remove this line to disable -->
+  <script src="team.js"></script>
 </body>
 </html>

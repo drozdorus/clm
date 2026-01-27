@@ -1,0 +1,190 @@
+/* =============================================
+   TEAM SECTION — standalone block
+   Remove this file + the <link> + the <section id="team">
+   from index.html to disable the team section entirely.
+   ============================================= */
+
+/* Section wrapper */
+.team {
+  padding: 100px 0;
+}
+
+.team .section-title {
+  margin-bottom: var(--space-xs);
+}
+
+.team .section-subtitle {
+  margin-bottom: var(--space-xl);
+}
+
+/* Carousel wrapper */
+.team-carousel {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+}
+
+/* Scrollable track */
+.team-track {
+  display: flex;
+  gap: var(--space-md);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--space-sm) 0 var(--space-lg);
+
+  /* Hide scrollbar but keep functionality */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.team-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual card */
+.team-card {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+  background: var(--surface);
+  border: 1px solid rgba(255, 215, 0, 0.08);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.4s var(--ease);
+  cursor: default;
+}
+
+.team-card:hover {
+  background: var(--surface-hover);
+  border-color: rgba(255, 215, 0, 0.25);
+  box-shadow: var(--shadow);
+}
+
+/* Avatar area */
+.team-avatar {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.team-avatar img,
+.team-avatar svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Text area */
+.team-info {
+  padding: var(--space-md);
+}
+
+.team-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.team-role {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 0.3px;
+}
+
+/* Navigation arrows */
+.team-nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.team-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease);
+}
+
+.team-nav-btn:hover {
+  background: var(--surface-hover);
+  border-color: rgba(255, 215, 0, 0.3);
+  color: var(--primary);
+}
+
+.team-nav-btn:active {
+  transform: scale(0.95);
+}
+
+.team-nav-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Scroll progress dots */
+.team-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: var(--space-md);
+}
+
+.team-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  transition: all 0.3s var(--ease);
+}
+
+.team-dot.active {
+  width: 24px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .team {
+    padding: var(--space-2xl) 0;
+  }
+
+  .team-card {
+    flex: 0 0 220px;
+  }
+
+  .team-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-card {
+    flex: 0 0 200px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .team-track {
+    scroll-behavior: auto;
+  }
+
+  .team-card {
+    transition: none;
+    transform: none !important;
+  }
+}
