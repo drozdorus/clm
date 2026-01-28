@@ -20,7 +20,7 @@
 /* Carousel wrapper */
 .team-carousel {
   position: relative;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 var(--space-sm);
 }
@@ -76,6 +76,11 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s var(--ease);
+}
+
+.team-card:hover .team-avatar img {
+  transform: scale(1.08);
 }
 
 /* Text area */
