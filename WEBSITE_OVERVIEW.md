@@ -5,8 +5,8 @@
 - **Name**: Calma
 - **Domain**: calma.io
 - **Tagline**: "Keep calm, Calma generates leads"
-- **Pitch**: "Where data meets creativity to fuel lead generation success"
-- **Industry**: AI-powered lead generation agency
+- **Pitch**: "Compliance-first lead generation for regulated verticals"
+- **Industry**: Performance lead generation
 - **Team**: ~10 members
 - **Target market**: US (primary), open to other geographies
 - **Contact**: info@calma.io
@@ -34,9 +34,9 @@ Single-page app with anchor navigation + a separate privacy policy page.
 | # | Section | Anchor | Purpose |
 |---|---------|--------|---------|
 | 1 | Hero | `#top` | Animated wave canvas background, headline, scroll indicator |
-| 2 | About | `#about` | Value proposition, AI-driven methodology (3 pillars), traffic sources |
-| 3 | Services | `#services` | 6 industry verticals |
-| 4 | Events | `#conferences` | Upcoming (3) and past (7, collapsible) conferences |
+| 2 | About | `#about` | Value proposition, methodology (3 pillars), acquisition channels |
+| 3 | Services | `#services` | 6 regulated industry verticals |
+| 4 | Events | `#conferences` | Industry events — upcoming (4) and past (7, collapsible) conferences |
 | 5 | Contact | `#contact` | Contact form + email + careers link |
 | 6 | Footer | — | Logo, nav, LinkedIn, copyright, privacy link |
 
@@ -55,7 +55,7 @@ Single-page app with anchor navigation + a separate privacy policy page.
 5. Home Improvement
 6. Financial Services
 
-## Traffic Sources
+## Acquisition Channels
 
 - Meta (Facebook/Instagram)
 - Google Ads
@@ -63,9 +63,9 @@ Single-page app with anchor navigation + a separate privacy policy page.
 
 ## Methodology (3 Pillars)
 
-1. AI Audience Intelligence
+1. Audience Intelligence
 2. Automated Optimization
-3. Quality Assurance
+3. Lead Verification
 
 ---
 
@@ -101,6 +101,7 @@ Affiliate Summit West, Web Summit, SBC, Affiliate World Europe, Affiliate Gala, 
 ## Key Interactive Features
 
 - **Canvas wave animation** — 5-layer animated sine waves with color-shifting HSL gradients, scroll-linked parallax and fade
+- **Island header** — full-width header morphs into a floating pill-shaped island on scroll (border-radius, translateY, max-width transition)
 - **Smooth scroll navigation** — anchor links with 80px header offset
 - **Intersection Observer animations** — sections fade in on scroll
 - **Mobile menu** — full-screen overlay with blur
@@ -111,7 +112,8 @@ Affiliate Summit West, Web Summit, SBC, Affiliate World Europe, Affiliate Gala, 
 
 ## Assets
 
-- `img/logo.svg` / `img/calma_white-logo.svg` — brand logo
+- `img/logo.svg` / `img/calma_white-logo.svg` — brand logo (full wordmark)
+- `img/logo-s.svg` — compact wave symbol logo (gradient)
 - `img/metaimg.png` — OpenGraph / social sharing image
 - `img/meta.svg`, `img/google.svg`, `img/tt.svg` — platform logos
 - `img/favicon/` — full favicon set (Android, Apple, standard)

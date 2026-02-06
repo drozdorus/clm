@@ -125,10 +125,12 @@ window.addEventListener('scroll', () => {
       const header = document.querySelector('.header');
       const canvas = document.getElementById('waveCanvas');
       
-      // Header background
-      header.style.background = scrolled > 50 ? 
-        'rgba(10, 10, 10, 0.95)' : 
-        'rgba(10, 10, 10, 0.7)';
+      // Header island toggle
+      if (scrolled > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
       
       // Canvas fade
       if (canvas) {
