@@ -301,9 +301,139 @@ document.addEventListener('DOMContentLoaded', () => {
   // Past events toggle
   const toggle = document.getElementById('pastEventsToggle');
   const content = document.getElementById('pastEventsContent');
-  
+
   toggle?.addEventListener('click', () => {
     const isActive = content.classList.toggle('active');
     toggle.classList.toggle('active', isActive);
   });
+
+  // Events slider
+  const sliderTrack = document.querySelector('.events-slider-track');
+  const sliderViewport = document.querySelector('.events-slider-viewport');
+  const prevBtn = document.querySelector('.events-slider-prev');
+  const nextBtn = document.querySelector('.events-slider-next');
+  const dotsContainer = document.querySelector('.events-slider-dots');
+  const cards = sliderTrack ? Array.from(sliderTrack.querySelectorAll('.conference-card')) : [];
+
+  if (sliderTrack && cards.length) {
+    let currentIndex = 0;
+    let cardsPerView = getCardsPerView();
+
+    function getCardsPerView() {
+      if (window.innerWidth <= 480) return 1;
+      if (window.innerWidth <= 900) return 2;
+      return 3;
+    }
+
+    function getMaxIndex() {
+      return Math.max(0, cards.length - cardsPerView);
+    }
+
+    function buildDots() {
+      dotsContainer.innerHTML = '';
+      const totalDots = getMaxIndex() + 1;
+      for (let i = 0; i < totalDots; i++) {
+        const dot = document.createElement('button');
+        dot.classList.add('events-slider-dot');
+        if (i === currentIndex) dot.classList.add('active');
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateSlider() {
+      const gap = 24;
+      const viewportWidth = sliderViewport.offsetWidth;
+      const cardWidth = (viewportWidth - gap * (cardsPerView - 1)) / cardsPerView;
+      const offset = currentIndex * (cardWidth + gap);
+      sliderTrack.style.transform = `translateX(-${offset}px)`;
+
+      prevBtn.disabled = currentIndex <= 0;
+      nextBtn.disabled = currentIndex >= getMaxIndex();
+
+      dotsContainer.querySelectorAll('.events-slider-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
+
+    function goTo(index) {
+      currentIndex = Math.max(0, Math.min(index, getMaxIndex()));
+      updateSlider();
+    }
+
+    prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+    nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+
+    // Unified drag support (touch + mouse)
+    let dragStartX = 0;
+    let dragDeltaX = 0;
+    let isDragging = false;
+    let hasDragged = false;
+
+    function getBaseOffset() {
+      const gap = 24;
+      const viewportWidth = sliderViewport.offsetWidth;
+      const cardWidth = (viewportWidth - gap * (cardsPerView - 1)) / cardsPerView;
+      return currentIndex * (cardWidth + gap);
+    }
+
+    function onDragStart(x) {
+      dragStartX = x;
+      dragDeltaX = 0;
+      isDragging = true;
+      hasDragged = false;
+      sliderTrack.style.transition = 'none';
+      sliderViewport.classList.add('dragging');
+    }
+
+    function onDragMove(x) {
+      if (!isDragging) return;
+      dragDeltaX = x - dragStartX;
+      if (Math.abs(dragDeltaX) > 5) hasDragged = true;
+      sliderTrack.style.transform = `translateX(${-getBaseOffset() + dragDeltaX}px)`;
+    }
+
+    function onDragEnd() {
+      if (!isDragging) return;
+      isDragging = false;
+      sliderTrack.style.transition = '';
+      sliderViewport.classList.remove('dragging');
+      if (Math.abs(dragDeltaX) > 50) {
+        if (dragDeltaX < 0) goTo(currentIndex + 1);
+        else goTo(currentIndex - 1);
+      } else {
+        updateSlider();
+      }
+      dragDeltaX = 0;
+    }
+
+    // Touch events
+    sliderViewport.addEventListener('touchstart', (e) => onDragStart(e.touches[0].clientX), { passive: true });
+    sliderViewport.addEventListener('touchmove', (e) => onDragMove(e.touches[0].clientX), { passive: true });
+    sliderViewport.addEventListener('touchend', onDragEnd);
+
+    // Mouse events
+    sliderViewport.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      onDragStart(e.clientX);
+    });
+    document.addEventListener('mousemove', (e) => onDragMove(e.clientX));
+    document.addEventListener('mouseup', onDragEnd);
+
+    // Prevent click navigation when dragging
+    sliderViewport.addEventListener('click', (e) => {
+      if (hasDragged) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+
+    window.addEventListener('resize', () => {
+      cardsPerView = getCardsPerView();
+      if (currentIndex > getMaxIndex()) currentIndex = getMaxIndex();
+      buildDots();
+      updateSlider();
+    });
+
+    buildDots();
+    updateSlider();
+  }
 });
