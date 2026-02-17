@@ -421,6 +421,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousemove', (e) => onDragMove(e.clientX));
     document.addEventListener('mouseup', onDragEnd);
 
+    // Trackpad horizontal scroll
+    let wheelAccum = 0;
+    let wheelLocked = false;
+    sliderViewport.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      if (wheelLocked) return;
+      wheelAccum += e.deltaX;
+      if (Math.abs(wheelAccum) > 30) {
+        goTo(currentIndex + (wheelAccum > 0 ? 1 : -1));
+        wheelAccum = 0;
+        wheelLocked = true;
+        setTimeout(() => { wheelLocked = false; }, 400);
+      }
+    }, { passive: false });
+
     // Prevent click navigation when dragging
     sliderViewport.addEventListener('click', (e) => {
       if (hasDragged) { e.preventDefault(); e.stopPropagation(); }
