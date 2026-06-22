@@ -14,8 +14,6 @@ export interface Props {
 const { home = false } = Astro.props;
 const base = home ? '' : '/';
 const logoHref = home ? '#top' : '/';
-const vacanciesUrl =
-  'https://calma-io.notion.site/Open-Vacancies-Calma-Agency-169f120c65df806bba68fc5163bcfa52';
 
 // Drive the "What we do" column from the verticals collection.
 const verticals = (await getCollection('verticals')).sort(
@@ -49,7 +47,7 @@ const year = new Date().getFullYear();
         <a href={`${base}#team`} class="footer-link">Team</a>
         <a href={`${base}#conferences`} class="footer-link">Events</a>
         <a href="/blog/" class="footer-link">Blog</a>
-        <a href={vacanciesUrl} target="_blank" rel="noopener" class="footer-link">Careers</a>
+        <a href="/hiring/" class="footer-link">Careers</a>
       </div>
 
       <div class="footer-col">

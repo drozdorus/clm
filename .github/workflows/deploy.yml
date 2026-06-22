@@ -37,6 +37,10 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Build with Astro
         run: npm run build
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_VACANCIES_DB_ID: ${{ secrets.NOTION_VACANCIES_DB_ID }}
+          PUBLIC_N8N_WEBHOOK: ${{ secrets.PUBLIC_N8N_WEBHOOK }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
