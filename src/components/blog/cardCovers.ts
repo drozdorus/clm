@@ -51,4 +51,28 @@ export const cardCovers: Record<string, string> = {
               <defs><linearGradient id="cg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a0a0a" stop-opacity="1"/><stop offset="45%" stop-color="#0a0a0a" stop-opacity="0"/></linearGradient></defs>
               <rect width="480" height="65" fill="url(#cg3)"/>
             </svg>`,
+  'fomo-tax-ai-horizon-journal': `<svg viewBox="0 0 480 150" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="480" height="150" fill="#0d0d0d"/>
+              <circle cx="45" cy="38" r="2" fill="white" fill-opacity="0.14"/>
+              <circle cx="75" cy="119" r="1.7" fill="white" fill-opacity="0.12"/>
+              <circle cx="115" cy="32" r="1.4" fill="white" fill-opacity="0.1"/>
+              <circle cx="150" cy="125" r="2" fill="white" fill-opacity="0.13"/>
+              <circle cx="210" cy="28" r="1.7" fill="white" fill-opacity="0.1"/>
+              <circle cx="280" cy="128" r="1.4" fill="white" fill-opacity="0.1"/>
+              <circle cx="320" cy="35" r="2" fill="white" fill-opacity="0.14"/>
+              <circle cx="370" cy="122" r="1.7" fill="white" fill-opacity="0.11"/>
+              <circle cx="410" cy="40" r="1.4" fill="white" fill-opacity="0.1"/>
+              <circle cx="445" cy="115" r="2" fill="white" fill-opacity="0.13"/>
+              <text x="240" y="88" text-anchor="middle" font-family="system-ui,sans-serif" font-size="30" font-weight="800" fill="#3DD68C" fill-opacity="0.08">FOMO TAX</text>
+              <polyline points="30,94 95,60 165,97 235,50 305,94 375,63 450,88" fill="none" stroke="#3DD68C" stroke-opacity="0.4" stroke-width="1.5"/>
+              <circle cx="30" cy="94" r="3.5" fill="#3DD68C" fill-opacity="0.5"/>
+              <circle cx="95" cy="60" r="3.5" fill="#3DD68C" fill-opacity="0.5"/>
+              <circle cx="165" cy="97" r="3.5" fill="#3DD68C" fill-opacity="0.5"/>
+              <circle cx="235" cy="50" r="4.5" fill="#3DD68C" fill-opacity="0.65"/>
+              <circle cx="305" cy="94" r="3.5" fill="#3DD68C" fill-opacity="0.5"/>
+              <circle cx="375" cy="63" r="3.5" fill="#3DD68C" fill-opacity="0.5"/>
+              <circle cx="450" cy="88" r="3.5" fill="#3DD68C" fill-opacity="0.5"/>
+              <defs><linearGradient id="cg4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a0a0a" stop-opacity="1"/><stop offset="55%" stop-color="#0a0a0a" stop-opacity="0"/></linearGradient></defs>
+              <rect width="480" height="80" fill="url(#cg4)"/>
+            </svg>`,
 };

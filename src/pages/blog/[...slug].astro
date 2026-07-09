@@ -82,7 +82,9 @@ const articleJsonLd = {
   useBlogCss={true}
 >
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+    {data.faq && data.faq.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+    )}
     <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
   </Fragment>
 
@@ -119,17 +121,19 @@ const articleJsonLd = {
         <article class="article-prose">
           <Content />
 
-          <section class="article-faq">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-list">
-              {(data.faq ?? []).map((item) => (
-                <details class="faq-item">
-                  <summary>{item.questionRendered ?? item.question}<span class="faq-icon" aria-hidden="true">+</span></summary>
-                  <div class="faq-answer"><p>{item.answer}</p></div>
-                </details>
-              ))}
-            </div>
-          </section>
+          {data.faq && data.faq.length > 0 && (
+            <section class="article-faq">
+              <h2>Frequently Asked Questions</h2>
+              <div class="faq-list">
+                {data.faq.map((item) => (
+                  <details class="faq-item">
+                    <summary>{item.questionRendered ?? item.question}<span class="faq-icon" aria-hidden="true">+</span></summary>
+                    <div class="faq-answer"><p>{item.answer}</p></div>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
 
           {data.afterFaq && <Fragment set:html={data.afterFaq} />}
         </article>

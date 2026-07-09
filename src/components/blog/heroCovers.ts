@@ -55,4 +55,29 @@ export const heroCovers: Record<string, string> = {
               <defs><linearGradient id="hg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a0a0a" stop-opacity="1"/><stop offset="50%" stop-color="#0a0a0a" stop-opacity="0"/></linearGradient></defs>
               <rect width="960" height="130" fill="url(#hg3)"/>
             </svg>`,
+  'fomo-tax-ai-horizon-journal': `<svg viewBox="0 0 960 240" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="960" height="240" fill="#0d0d0d"/>
+              <circle cx="90" cy="60" r="3" fill="white" fill-opacity="0.14"/>
+              <circle cx="150" cy="190" r="2.5" fill="white" fill-opacity="0.12"/>
+              <circle cx="230" cy="50" r="2" fill="white" fill-opacity="0.1"/>
+              <circle cx="300" cy="200" r="3" fill="white" fill-opacity="0.13"/>
+              <circle cx="420" cy="45" r="2.5" fill="white" fill-opacity="0.1"/>
+              <circle cx="560" cy="205" r="2" fill="white" fill-opacity="0.1"/>
+              <circle cx="640" cy="55" r="3" fill="white" fill-opacity="0.14"/>
+              <circle cx="740" cy="195" r="2.5" fill="white" fill-opacity="0.11"/>
+              <circle cx="820" cy="65" r="2" fill="white" fill-opacity="0.1"/>
+              <circle cx="890" cy="185" r="3" fill="white" fill-opacity="0.13"/>
+              <text x="480" y="140" text-anchor="middle" font-family="system-ui,sans-serif" font-size="58" font-weight="800" fill="#3DD68C" fill-opacity="0.07">FOMO TAX</text>
+              <polyline points="60,150 190,95 330,155 470,80 610,150 750,100 900,140" fill="none" stroke="#3DD68C" stroke-opacity="0.4" stroke-width="2"/>
+              <circle cx="60" cy="150" r="5" fill="#3DD68C" fill-opacity="0.5"/>
+              <circle cx="190" cy="95" r="5" fill="#3DD68C" fill-opacity="0.5"/>
+              <circle cx="330" cy="155" r="5" fill="#3DD68C" fill-opacity="0.5"/>
+              <circle cx="470" cy="80" r="6" fill="#3DD68C" fill-opacity="0.65"/>
+              <circle cx="610" cy="150" r="5" fill="#3DD68C" fill-opacity="0.5"/>
+              <circle cx="750" cy="100" r="5" fill="#3DD68C" fill-opacity="0.5"/>
+              <circle cx="900" cy="140" r="5" fill="#3DD68C" fill-opacity="0.5"/>
+              <text x="480" y="215" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" letter-spacing="0.18em" fill="#3DD68C" fill-opacity="0.28">AI HORIZON JOURNAL</text>
+              <defs><linearGradient id="hg4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a0a0a" stop-opacity="1"/><stop offset="55%" stop-color="#0a0a0a" stop-opacity="0"/></linearGradient></defs>
+              <rect width="960" height="140" fill="url(#hg4)"/>
+            </svg>`,
 };
