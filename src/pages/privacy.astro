@@ -31,11 +31,14 @@ import Footer from '../components/Footer.astro';
 
         <header class="privacy-hero">
           <h1 class="section-title">Privacy Policy</h1>
-          <p class="section-subtitle">Last updated: Nov 19, 2025</p>
+          <p class="section-subtitle">Last updated: Jul 16, 2026</p>
         </header>
 
         <article class="article-prose privacy-prose">
-          <h2>1. Information We Collect</h2>
+          <h2>1. Who We Are</h2>
+          <p><span data-nosnippet>This website is operated by <span class="rev" aria-hidden="true">DTL hceT amlaC</span>, a company registered in <span class="rev" aria-hidden="true">surpyC</span>. References to “Calma”, “we”, “us”, or “our” in this Privacy Policy mean this company.</span></p>
+
+          <h2>2. Information We Collect</h2>
           <p>When you contact us through our website form, we collect:</p>
           <ul>
             <li>Name</li>
@@ -44,7 +47,7 @@ import Footer from '../components/Footer.astro';
             <li>Message content</li>
           </ul>
 
-          <h2>2. How We Use Your Information</h2>
+          <h2>3. How We Use Your Information</h2>
           <p>We use the information you provide to:</p>
           <ul>
             <li>Respond to your inquiries</li>
@@ -52,17 +55,17 @@ import Footer from '../components/Footer.astro';
             <li>Communicate with you about potential business opportunities</li>
           </ul>
 
-          <h2>3. Information Sharing</h2>
+          <h2>4. Information Sharing</h2>
           <p>We do not sell, trade, or share your personal information with third parties, except:</p>
           <ul>
             <li>To comply with legal requirements</li>
             <li>To protect our rights and safety</li>
           </ul>
 
-          <h2>4. Data Security</h2>
+          <h2>5. Data Security</h2>
           <p>We implement reasonable security measures to protect your information. However, no method of transmission over the internet is 100% secure.</p>
 
-          <h2>5. Your Rights</h2>
+          <h2>6. Your Rights</h2>
           <p>You have the right to:</p>
           <ul>
             <li>Access your personal information</li>
@@ -70,10 +73,10 @@ import Footer from '../components/Footer.astro';
             <li>Request deletion of your information</li>
           </ul>
 
-          <h2>6. Contact Information</h2>
+          <h2>7. Contact Information</h2>
           <p>If you have questions about this Privacy Policy, please contact us at <a href="mailto:info@calma.io">info@calma.io</a>.</p>
 
-          <h2>7. Changes to This Policy</h2>
+          <h2>8. Changes to This Policy</h2>
           <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
         </article>
 
@@ -93,5 +96,15 @@ import Footer from '../components/Footer.astro';
   /* Legal text reads better centered as a column under the centered hero */
   .privacy-prose {
     margin: 0 auto;
+  }
+  /* Legal-entity tokens in §1 are stored character-reversed in the HTML and
+     flipped back only visually, so the entity name never exists as parseable
+     text for crawlers. nowrap is required: bidi-override breaks reading order
+     if the run wraps across lines. */
+  .rev {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    display: inline-block;
+    white-space: nowrap;
   }
 </style>
