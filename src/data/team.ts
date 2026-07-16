@@ -49,7 +49,7 @@ export const team: TeamMember[] = [
     alt: 'Julia',
     img: 'julia.svg',
     role: 'Numbers Whisperer',
-    linkedin: 'https://www.linkedin.com/in/yulia-gorodenska-a57109264/',
+    linkedin: 'https://www.linkedin.com/in/iulia-gorodenska-a57109264/',
   },
   { name: 'Vik', alt: 'Vik', img: 'vik.svg', role: 'Talent Scout' },
 ];
