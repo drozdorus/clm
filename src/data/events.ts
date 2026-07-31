@@ -9,7 +9,11 @@
 // eventStatus derived from the date; older past events only render as pills.
 
 export interface CalmaEvent {
-  /** Short display name for the card / pill (e.g. "Affiliate World") */
+  /** Display name for the card / pill, matching how the organiser names the
+   *  edition: regional ones carry the region (Affiliate Summit East, Affiliate
+   *  World Europe, SBC Summit Americas), the flagship goes unqualified even
+   *  though it has a home city (SBC Summit = the Lisbon one). Keep every
+   *  edition of a brand spelled the same way across years. */
   name: string;
   /** JSON-LD Event name with edition/year (defaults to `name`) */
   schemaName?: string;
@@ -46,7 +50,7 @@ export const events: CalmaEvent[] = [
     linkLabel: 'sbcevents.com',
   },
   {
-    name: 'Affiliate World',
+    name: 'Affiliate World Europe',
     schemaName: 'Affiliate World Europe 2026',
     description:
       'Premier affiliate marketing conference bringing together top affiliates, networks, and advertisers.',
@@ -183,7 +187,7 @@ export const events: CalmaEvent[] = [
   { name: 'Web Summit', start: '2025-11-01', end: '2025-11-01', location: 'Lisbon, Portugal' },
   // SBC ran mid-September, Affiliate World early September — days kept so the
   // past list sorts SBC first within the month.
-  { name: 'SBC', start: '2025-09-16', end: '2025-09-18', location: 'Lisbon, Portugal' },
+  { name: 'SBC Summit', start: '2025-09-16', end: '2025-09-18', location: 'Lisbon, Portugal' },
   { name: 'Affiliate World Europe', start: '2025-09-04', end: '2025-09-05', location: 'Budapest, Hungary' },
   { name: 'Affiliate Summit East', start: '2025-08-01', end: '2025-08-01', location: 'New York, US' },
   { name: 'Affiliate Takeover', start: '2025-07-01', end: '2025-07-01', location: 'Barcelona, Spain' },
