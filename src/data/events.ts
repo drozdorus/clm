@@ -115,6 +115,19 @@ export const events: CalmaEvent[] = [
     linkLabel: 'appgala.events',
   },
   {
+    name: 'Affiliate Grand Slam',
+    schemaName: 'Affiliate Grand Slam Rome 2026',
+    description:
+      'Affiliate and performance marketing conference gathering networks, advertisers, and media buyers, co-located with SiGMA Europe in Rome.',
+    start: '2026-11-02',
+    end: '2026-11-05',
+    location: 'Rome, Italy',
+    url: 'https://affiliategrandslam.com/',
+    organizer: { name: 'SiGMA Group', url: 'https://sigma.world' },
+    logo: { src: '/img/ags-logo-white.svg', alt: 'Affiliate Grand Slam' },
+    linkLabel: 'affiliategrandslam.com',
+  },
+  {
     name: 'Web Summit',
     schemaName: 'Web Summit 2026',
     description:
@@ -173,8 +186,8 @@ export const events: CalmaEvent[] = [
   { name: 'SBC', start: '2025-09-16', end: '2025-09-18', location: 'Lisbon, Portugal' },
   { name: 'Affiliate World Europe', start: '2025-09-04', end: '2025-09-05', location: 'Budapest, Hungary' },
   { name: 'Affiliate Summit East', start: '2025-08-01', end: '2025-08-01', location: 'New York, US' },
+  { name: 'Affiliate Takeover', start: '2025-07-01', end: '2025-07-01', location: 'Barcelona, Spain' },
   { name: 'AppGala', start: '2025-04-01', end: '2025-04-01', location: 'Warsaw, Poland' },
-  { name: 'Affiliate Takeover', start: '2024-07-01', end: '2024-07-01', location: 'Barcelona, Spain' },
 ];
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
