@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: 'Which verticals do you work with?',
-    a: 'We generate leads across six main verticals: auto insurance, home insurance, health insurance, legal services, home improvement, and financial services (HELOC, credit, lending, personal finance).',
+    a: 'We generate leads across five main verticals: auto insurance, home insurance, health insurance, home improvement, and financial services (HELOC, credit, lending, personal finance).',
   },
   {
     q: 'How does performance-based lead generation work?',
@@ -96,14 +96,14 @@ const latestPosts = (await getCollection('blog'))
 
 <BaseLayout
   title="Calma — Performance Lead Generation Agency"
-  description="Calma is a performance lead generation publisher specializing in insurance, legal, financial, and home improvement verticals. Compliance-first, AI-optimized lead acquisition."
+  description="Calma is a performance lead generation publisher specializing in insurance, financial, and home improvement verticals. Compliance-first, AI-optimized lead acquisition."
   canonical="https://calma.io/"
-  keywords="lead generation, lead gen agency, performance lead generation, insurance lead generation, auto insurance leads, home insurance leads, health insurance leads, legal leads, financial services leads, home improvement leads, compliance lead generation, AI lead generation, performance marketing agency, calma, calma agency, calma io, calma marketing, calma lead gen"
+  keywords="lead generation, lead gen agency, performance lead generation, insurance lead generation, auto insurance leads, home insurance leads, health insurance leads, financial services leads, home improvement leads, compliance lead generation, AI lead generation, performance marketing agency, calma, calma agency, calma io, calma marketing, calma lead gen"
   ogTitle="Calma — Performance Lead Generation Agency"
-  ogDescription="Compliance-first, AI-optimized lead acquisition for insurance, legal, financial, and home improvement verticals."
+  ogDescription="Compliance-first, AI-optimized lead acquisition for insurance, financial, and home improvement verticals."
   ogImage="https://calma.io/img/metaimg.png"
   twitterTitle="Calma — Performance Lead Generation Agency"
-  twitterDescription="Compliance-first, AI-optimized lead acquisition for insurance, legal, financial, and home improvement verticals."
+  twitterDescription="Compliance-first, AI-optimized lead acquisition for insurance, financial, and home improvement verticals."
   useBlogCss={true}
   useTeamCss={true}
   useTeamScript={true}
@@ -124,7 +124,7 @@ const latestPosts = (await getCollection('blog'))
             "url": "https://calma.io/img/logo.svg"
           },
           "image": "https://calma.io/img/metaimg.png",
-          "description": "Calma is a performance lead generation publisher specializing in compliance-first, AI-optimized lead acquisition across auto insurance, home insurance, health insurance, legal services, home improvement, and financial services verticals.",
+          "description": "Calma is a performance lead generation publisher specializing in compliance-first, AI-optimized lead acquisition across auto insurance, home insurance, health insurance, home improvement, and financial services verticals.",
           "email": "info@calma.io",
           "areaServed": "United States",
           "contactPoint": {
@@ -154,7 +154,6 @@ const latestPosts = (await getCollection('blog'))
               { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Auto Insurance Lead Generation" } },
               { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Home Insurance Lead Generation" } },
               { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Health Insurance Lead Generation" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Legal Services Lead Generation" } },
               { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Home Improvement Lead Generation" } },
               { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Financial Services Lead Generation" } }
             ]
@@ -180,7 +179,7 @@ const latestPosts = (await getCollection('blog'))
           "name": "Calma",
           "url": "https://calma.io",
           "publisher": { "@id": "https://calma.io/#organization" },
-          "description": "Performance lead generation publisher for insurance, legal, financial, and home improvement verticals"
+          "description": "Performance lead generation publisher for insurance, financial, and home improvement verticals"
         },
         ...eventsJsonLd,
         {
@@ -442,16 +441,14 @@ const latestPosts = (await getCollection('blog'))
       <!-- Past Events -->
       <div class="past-events-section">
         <h3 class="events-section-title">Past Events</h3>
-        <div class="past-events-scroller">
-          <div class="past-events-track">
-            {pastEvents.map((e) => (
-              <div class="past-conference-card">
-                <time class="past-conference-date" datetime={e.end.slice(0, 7)}>{formatPastDate(e)}</time>
-                <h4 class="past-conference-name">{e.name}</h4>
-                <p class="past-conference-location">{e.location}</p>
-              </div>
-            ))}
-          </div>
+        <div class="past-events-cloud">
+          {pastEvents.map((e) => (
+            <div class="past-conference-card">
+              <time class="past-conference-date" datetime={e.end.slice(0, 7)}>{formatPastDate(e)}</time>
+              <h4 class="past-conference-name">{e.name}</h4>
+              <p class="past-conference-location">{e.location}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
