@@ -184,7 +184,7 @@ body {
 
 /* Container */
 .container {
-  max-width: 1000px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 0 var(--space-sm);
 }
@@ -235,7 +235,7 @@ body {
 }
 
 .header-content {
-  max-width: 1000px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 16px var(--space-sm);
   display: flex;
@@ -579,7 +579,7 @@ body {
 }
 
 .hero-content {
-  max-width: 1000px;
+  max-width: 1120px;
   animation: fadeInUp 1s ease;
 }
 
@@ -693,7 +693,7 @@ body {
 
 /* About */
 .about-content {
-  max-width: 1000px;
+  max-width: 1120px;
   margin: 0 auto var(--space-2xl);
 }
 
@@ -749,7 +749,7 @@ body {
 
 /* Methodology */
 .methodology {
-  max-width: 1000px;
+  max-width: 1120px;
   margin: 0 auto var(--space-2xl);
 }
 
@@ -803,7 +803,7 @@ body {
 
 /* Traffic Sources */
 .traffic-sources {
-  max-width: 1000px;
+  max-width: 1120px;
   margin: 0 auto;
 }
 
@@ -851,7 +851,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-md);
-  max-width: 1000px;
+  max-width: 1120px;
   margin: 0 auto;
 }
 
@@ -961,7 +961,7 @@ body {
 
 .approach {
   margin-top: var(--space-2xl);
-  max-width: 1000px;
+  max-width: 1120px;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -1190,7 +1190,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-2xl);
-  max-width: 1000px;
+  max-width: 1120px;
   margin: 0 auto;
 }
 
