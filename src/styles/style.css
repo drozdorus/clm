@@ -1193,39 +1193,16 @@ body {
   margin-bottom: var(--space-lg);
 }
 
+/* Email and careers links use the shared .text-link convention. */
 .contact-email {
   font-size: 1.1rem;
   font-weight: 400;
   margin-bottom: var(--space-lg);
 }
 
-.contact-email a {
-  color: var(--primary);
-  text-decoration: none;
-  transition: all 0.3s;
-  padding: 4px 8px;
-  border-radius: var(--radius-sm);
-}
-
-.contact-email a:hover {
-  color: var(--secondary);
-  background: var(--surface);
-}
-
 .careers-link {
   padding-top: var(--space-md);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.careers-link-text {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s;
-}
-
-.careers-link-text:hover {
-  color: var(--secondary);
 }
 
 /* Form */
@@ -1535,20 +1512,21 @@ body {
   }
 }
 
-/* Staggered card entrance animations */
+/* Staggered card entrance animations. The hidden state is scoped to
+   `.section.pre-fade` (script.js adds it right before observing), so the
+   cards' natural state is visible: pages reusing them outside an observed
+   .section need no overrides, and nothing hides without JS. */
 .methodology-item,
 .service-card,
 .traffic-source {
-  opacity: 0;
-  transform: translateY(20px);
   transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
 }
 
-.section.visible .methodology-item,
-.section.visible .service-card,
-.section.visible .traffic-source {
-  opacity: 1;
-  transform: translateY(0);
+.section.pre-fade .methodology-item,
+.section.pre-fade .service-card,
+.section.pre-fade .traffic-source {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .section.visible .methodology-item:nth-child(1),
@@ -1665,14 +1643,17 @@ body {
   line-height: 1.7;
 }
 
+/* Links inside FAQ answers follow the site's text-link convention
+   (underline = "link in text", amber → mint on hover). */
 .faq-answer a {
   color: var(--primary);
-  text-decoration: none;
-  transition: opacity 0.2s;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s var(--ease);
 }
 
 .faq-answer a:hover {
-  opacity: 0.8;
+  color: var(--secondary);
 }
 
 /* Boxed container (homepage) */
