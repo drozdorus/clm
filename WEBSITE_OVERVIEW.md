@@ -118,7 +118,7 @@ Audience Intelligence · Automated Optimization · Lead Verification
 - **Accents**: `--primary` gold `#E8B547`, `--secondary` mint `#3DD68C` (desaturated
   in the April 2026 refresh, were `#FFD700` / `#00FF7F`).
 - **Text**: white with opacity tokens — `--text` / `--text-secondary` (.7) / `--text-muted` (.5).
-- **Layout**: `.container` max-width **1000px**. Island header narrows to 860px on scroll.
+- **Layout**: `.container` max-width **1120px** (widened from 1000px on 2026-08-25). Island header narrows to 860px on scroll.
 - **Tokens**: spacing (`--space-xs…2xl`), radius (`--radius-sm…xl`), glass surface
   (`--glass-bg`, `--glass-shadow`, hover variants), borders, eases. Use these — avoid
   hardcoded values.
