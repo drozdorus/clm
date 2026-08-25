@@ -395,7 +395,7 @@ body {
   font-size: 0.9rem;
   padding: 10px 18px;
   border: 1px solid rgba(232, 181, 71, 0.3);
-  border-radius: 20px;
+  border-radius: 100px;
   transition: all 0.3s var(--ease-spring);
 }
 
@@ -587,13 +587,13 @@ body {
   transform: translateY(3px);
 }
 
-/* Buttons — one primary action style site-wide (band CTAs, vertical heroes,
-   404, form submit). The Hiring pill in the header is the only other button
-   affordance and deliberately keeps its own outline-pill look. */
+/* Buttons — one family, one pill geometry. Hierarchy comes from fill, not
+   shape: .btn-primary = filled amber (band CTAs, vertical heroes, 404, form
+   submit), .hiring-link = outline pill with gradient-fill hover (header nav). */
 .btn-primary {
   display: inline-block;
   padding: 0.8rem 1.6rem;
-  border-radius: var(--radius-md);
+  border-radius: 100px;
   background: var(--primary);
   color: #0a0a0a;
   font-weight: 600;
