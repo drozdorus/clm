@@ -991,8 +991,7 @@ body {
 }
 
 /* Horizontal scrollers — shared */
-.upcoming-events-scroller,
-.past-events-scroller {
+.upcoming-events-scroller {
   --fade-start: 0%;
   --fade-end: 0%;
   mask-image: linear-gradient(90deg,
@@ -1120,24 +1119,12 @@ body {
   margin-bottom: var(--space-md);
 }
 
-.past-events-scroller {
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 6px 0;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  cursor: grab;
-}
-
-.past-events-scroller::-webkit-scrollbar { display: none; }
-
-.past-events-scroller.dragging { cursor: grabbing; }
-
-.past-events-track {
+/* Wrapping pill cloud — every past event is visible at once, no scroll to hide behind. */
+.past-events-cloud {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-sm);
-  width: max-content;
 }
 
 .past-conference-card {
