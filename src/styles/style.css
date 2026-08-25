@@ -822,52 +822,27 @@ body {
   margin-bottom: var(--space-lg);
 }
 
-.traffic-sources-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
-}
-
-.traffic-source {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding: var(--space-md);
-  background: var(--glass-bg);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-default);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: var(--glass-shadow);
-  transition: all 0.3s var(--ease);
-}
-
-.traffic-source:hover {
-  background: var(--glass-bg-hover);
-  transform: translateY(-2px);
-  border-color: var(--border-hover);
-  box-shadow: var(--glass-shadow-hover);
-}
-
-.traffic-source-logo {
-  width: 180px;
-  height: 48px;
+/* Quiet logo strip — brand marks only, no boxes around them. */
+.traffic-logos {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(var(--space-lg), 8vw, 96px);
+  padding: var(--space-sm) 0;
 }
 
-.traffic-source-logo img {
-  width: 100%;
-  height: 100%;
+.traffic-logos img {
+  height: 34px;
+  width: auto;
+  max-width: 150px;
   object-fit: contain;
-  filter: brightness(1);
-  transition: all 0.3s;
+  opacity: 0.75;
+  transition: opacity 0.3s var(--ease);
 }
 
-.traffic-source:hover .traffic-source-logo img {
-  filter: brightness(1.2);
+.traffic-logos img:hover {
+  opacity: 1;
 }
 
 /* Services */
@@ -1518,10 +1493,6 @@ body {
     font-size: 1rem;
   }
 
-  .traffic-sources-grid {
-    grid-template-columns: 1fr;
-  }
-
   .contact-content {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
@@ -1570,29 +1541,24 @@ body {
    cards' natural state is visible: pages reusing them outside an observed
    .section need no overrides, and nothing hides without JS. */
 .methodology-item,
-.service-card,
-.traffic-source {
+.service-card {
   transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
 }
 
 .section.pre-fade .methodology-item,
-.section.pre-fade .service-card,
-.section.pre-fade .traffic-source {
+.section.pre-fade .service-card {
   opacity: 0;
   transform: translateY(20px);
 }
 
 .section.visible .methodology-item:nth-child(1),
-.section.visible .service-card:nth-child(1),
-.section.visible .traffic-source:nth-child(1) { transition-delay: 0ms; }
+.section.visible .service-card:nth-child(1) { transition-delay: 0ms; }
 
 .section.visible .methodology-item:nth-child(2),
-.section.visible .service-card:nth-child(2),
-.section.visible .traffic-source:nth-child(2) { transition-delay: 80ms; }
+.section.visible .service-card:nth-child(2) { transition-delay: 80ms; }
 
 .section.visible .methodology-item:nth-child(3),
-.section.visible .service-card:nth-child(3),
-.section.visible .traffic-source:nth-child(3) { transition-delay: 160ms; }
+.section.visible .service-card:nth-child(3) { transition-delay: 160ms; }
 
 .section.visible .service-card:nth-child(4) { transition-delay: 240ms; }
 .section.visible .service-card:nth-child(5) { transition-delay: 320ms; }
@@ -1841,7 +1807,6 @@ body {
 /* Cards sit above blobs — z-index 1 ensures backdrop-filter sees blobs below */
 .methodology-item,
 .service-card,
-.traffic-source,
 .conference-card,
 .past-conference-card,
 .faq-list {
@@ -1865,8 +1830,7 @@ body {
   }
 
   .methodology-item,
-  .service-card,
-  .traffic-source {
+  .service-card {
     opacity: 1;
     transform: none;
   }
