@@ -389,8 +389,10 @@ function initHScroller(scroller) {
     const max = scroller.scrollWidth - scroller.clientWidth;
     const atStart = scroller.scrollLeft <= 2;
     const atEnd = max <= 0 || scroller.scrollLeft >= max - 2;
-    scroller.style.setProperty('--fade-start', atStart ? '0%' : '20%');
-    scroller.style.setProperty('--fade-end', atEnd ? '0%' : '20%');
+    // Cap the fade in px: 20% of a full-bleed (viewport-wide) scroller would
+    // dissolve a whole card on wide screens.
+    scroller.style.setProperty('--fade-start', atStart ? '0%' : 'min(160px, 20%)');
+    scroller.style.setProperty('--fade-end', atEnd ? '0%' : 'min(160px, 20%)');
   }
 
   scroller.addEventListener('scroll', updateFade, { passive: true });

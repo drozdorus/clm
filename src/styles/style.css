@@ -1027,6 +1027,19 @@ body {
   margin-bottom: var(--space-lg);
 }
 
+/* Full-bleed: the homepage card scrollers break out of the 1000px container
+   and run edge-to-edge, so cards visibly continue past the viewport. The
+   padding keeps the first card aligned with the container's content edge.
+   Section-scoped selectors do double duty: homepage-only (the /about/
+   founders row keeps its centered layout) AND higher specificity than the
+   base scroller rules below, whose width/padding they must override. */
+.conferences .upcoming-events-scroller,
+.team .team-scroller {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  padding-inline: calc((100vw - min(100vw, 1000px)) / 2 + var(--space-sm));
+}
+
 /* Horizontal scrollers — shared */
 .upcoming-events-scroller {
   --fade-start: 0%;
