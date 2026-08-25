@@ -1931,6 +1931,16 @@ a.logo {
   height: 100%;
 }
 
+/* Card hover zooms the cover art gently alongside the card lift; both
+   .article-card and .article-cover clip overflow, so the zoom stays framed. */
+.article-card .article-cover svg {
+  transition: transform 0.4s var(--ease);
+}
+
+.article-card:hover .article-cover svg {
+  transform: scale(1.06);
+}
+
 .article-body {
   padding: 1.25rem;
   display: flex;
