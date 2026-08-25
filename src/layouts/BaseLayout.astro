@@ -12,8 +12,6 @@ export interface Props {
   canonical: string;
   /** index, follow by default */
   robots?: string;
-  /** homepage-only keywords meta; omit elsewhere */
-  keywords?: string;
   ogType?: string;
   ogTitle?: string;
   ogDescription?: string;
@@ -32,7 +30,6 @@ const {
   description,
   canonical,
   robots = 'index, follow',
-  keywords,
   ogType = 'website',
   ogTitle,
   ogDescription,
@@ -69,7 +66,6 @@ const twitterImageFinal = twitterImage ?? ogImage;
 
   <!-- Meta Tags -->
   <meta name="description" content={description} />
-  {keywords && <meta name="keywords" content={keywords} />}
   <meta name="robots" content={robots} />
   <meta name="author" content="Calma" />
 
