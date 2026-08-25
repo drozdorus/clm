@@ -7,6 +7,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { site } from '../data/site';
 ---
 
 <BaseLayout
@@ -23,11 +25,7 @@ import Footer from '../components/Footer.astro';
     <div class="article-page">
       <div class="container">
 
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="/">calma.io</a>
-          <span class="breadcrumb-sep">/</span>
-          <span class="breadcrumb-current">Contact</span>
-        </nav>
+        <Breadcrumb items={[{ label: 'Contact' }]} />
 
         <section class="section contact" aria-label="Contact Us">
           <h1 class="section-title">Get In Touch</h1>
@@ -37,11 +35,11 @@ import Footer from '../components/Footer.astro';
               <p>Let's discuss how we can help grow your business.</p>
               <div class="contact-email">
                 <span>Email us: </span>
-                <a href="mailto:info@calma.io">info@calma.io</a>
+                <a href={`mailto:${site.email}`}>{site.email}</a>
               </div>
               <div class="careers-link">
                 <p>Want to work with us? <a
-                    href="https://calma-io.notion.site/Open-Vacancies-Calma-Agency-169f120c65df806bba68fc5163bcfa52"
+                    href={site.vacanciesUrl}
                     target="_blank" class="careers-link-text">Check out our open positions</a></p>
               </div>
             </div>

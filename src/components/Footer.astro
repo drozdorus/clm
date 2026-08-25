@@ -6,6 +6,7 @@
 // (`/`, `/#anchor`) to jump back to the homepage section. Only the section
 // anchors use `base`; page links (verticals, blog, contact, privacy) are absolute.
 import { getCollection } from 'astro:content';
+import { site } from '../data/site';
 
 export interface Props {
   /** homepage: emit bare `#anchor` links so the smooth-scroll JS matches */
@@ -14,8 +15,6 @@ export interface Props {
 const { home = false } = Astro.props;
 const base = home ? '' : '/';
 const logoHref = home ? '#top' : '/';
-const vacanciesUrl =
-  'https://calma-io.notion.site/Open-Vacancies-Calma-Agency-169f120c65df806bba68fc5163bcfa52';
 
 // Drive the "What we do" column from the verticals collection.
 const verticals = (await getCollection('verticals')).sort(
@@ -31,7 +30,7 @@ const year = new Date().getFullYear();
     <div class="footer-grid">
       <div class="footer-col footer-col--brand">
         <a href={logoHref} class="footer-logo"><img src="/img/logo.svg" width="104" height="16" alt="Calma" /></a>
-        <p class="footer-tagline">Performance lead generation across insurance, financial, legal, and home services
+        <p class="footer-tagline">Performance lead generation across insurance, financial, and home services
           verticals.</p>
       </div>
 
@@ -49,15 +48,15 @@ const year = new Date().getFullYear();
         <a href={`${base}#team`} class="footer-link">Team</a>
         <a href={`${base}#conferences`} class="footer-link">Events</a>
         <a href="/blog/" class="footer-link">Blog</a>
-        <a href={vacanciesUrl} target="_blank" rel="noopener" class="footer-link">Careers</a>
+        <a href={site.vacanciesUrl} target="_blank" rel="noopener" class="footer-link">Careers</a>
       </div>
 
       <div class="footer-col">
         <p class="footer-heading">Get in touch</p>
         <a href="/contacts/" class="footer-link">Contact</a>
-        <a href="mailto:info@calma.io" class="footer-link">info@calma.io</a>
-        <a href="https://www.linkedin.com/company/calma-io/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-        <a href="https://www.crunchbase.com/organization/calma-b99b" target="_blank" rel="noopener" class="footer-link">Crunchbase</a>
+        <a href={`mailto:${site.email}`} class="footer-link">{site.email}</a>
+        <a href={site.linkedin} target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+        <a href={site.crunchbase} target="_blank" rel="noopener" class="footer-link">Crunchbase</a>
       </div>
 
       <div class="footer-legal">

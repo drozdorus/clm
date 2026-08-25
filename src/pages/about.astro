@@ -12,6 +12,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import PageHero from '../components/PageHero.astro';
 import { team, accentFor } from '../data/team';
 
 const foundingNames = ['Rus', 'Yehor', 'Artur'];
@@ -66,23 +68,16 @@ const founderNotes: Record<string, string> = {
     <div class="article-page">
       <div class="container">
 
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="/">calma.io</a>
-          <span class="breadcrumb-sep">/</span>
-          <span class="breadcrumb-current">About</span>
-        </nav>
+        <Breadcrumb items={[{ label: 'About' }]} />
 
-        <header class="about-hero">
-          <h1 class="section-title">About Calma</h1>
-          <p class="section-subtitle">Keep calm, here's the story behind the agency</p>
-        </header>
+        <PageHero title="About Calma" subtitle="Keep calm, here's the story behind the agency" />
 
         <div class="services-grid about-grid">
           <div class="service-card">
             <h2 class="service-title">What we do</h2>
             <p class="about-copy">
               Calma is a performance lead generation agency. We build and run our own
-              acquisition funnels across insurance, financial, legal, and home services
+              acquisition funnels across insurance, financial, and home services
               verticals in the US, and deliver the resulting leads and calls to partners
               who can serve them.
             </p>
@@ -287,10 +282,6 @@ const founderNotes: Record<string, string> = {
 </script>
 
 <style>
-  .about-hero {
-    margin: 1.75rem 0 0;
-    text-align: center;
-  }
   /* .service-card defaults to opacity:0 until inside a scroll-observed
      .section.visible on the homepage — force visible on this static page
      (same workaround as the lead-generation hub). */

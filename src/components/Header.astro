@@ -5,9 +5,7 @@
 // Active state is pathname-based (server-side) via `Astro.url.pathname`.
 // The scroll-progress bar and mobile-menu open/close are wired in script.js.
 import { getCollection } from 'astro:content';
-
-const vacanciesUrl =
-  'https://calma-io.notion.site/Open-Vacancies-Calma-Agency-169f120c65df806bba68fc5163bcfa52';
+import { site } from '../data/site';
 
 // Drive the Verticals dropdown from the content collection.
 const verticals = (await getCollection('verticals')).sort(
@@ -56,7 +54,7 @@ const isContact = path.startsWith('/contacts');
 
         <a href="/blog/" class:list={['nav-link', { active: isBlog }]}>Blog</a>
         <a href="/contacts/" class:list={['nav-link', { active: isContact }]}>Contact</a>
-        <a href={vacanciesUrl} target="_blank" rel="noopener" class="hiring-link">
+        <a href={site.vacanciesUrl} target="_blank" rel="noopener" class="hiring-link">
           Hiring
           <span class="notification-dot"></span>
         </a>
@@ -95,7 +93,7 @@ const isContact = path.startsWith('/contacts');
 
   <a href="/blog/" class="nav-link" onclick="closeMobileMenu()">Blog</a>
   <a href="/contacts/" class="nav-link" onclick="closeMobileMenu()">Contact</a>
-  <a href={vacanciesUrl} target="_blank" rel="noopener" class="hiring-link">
+  <a href={site.vacanciesUrl} target="_blank" rel="noopener" class="hiring-link">
     Hiring
     <span class="notification-dot"></span>
   </a>

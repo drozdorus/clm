@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 
 export async function getStaticPaths() {
   const verticals = await getCollection('verticals');
@@ -44,13 +45,7 @@ const faqJsonLd = {
     <div class="article-page vertical-page">
       <div class="container">
 
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="/">calma.io</a>
-          <span class="breadcrumb-sep">/</span>
-          <a href="/lead-generation/">Verticals</a>
-          <span class="breadcrumb-sep">/</span>
-          <span class="breadcrumb-current">{data.breadcrumbLabel}</span>
-        </nav>
+        <Breadcrumb items={[{ label: 'Verticals', href: '/lead-generation/' }, { label: data.breadcrumbLabel }]} />
 
         <header class="vertical-hero">
           <h1 class="section-title vertical-hero-title">{data.h1}</h1>
