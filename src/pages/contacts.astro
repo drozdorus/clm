@@ -2,8 +2,7 @@
 // Contact page — the "Get In Touch" content moved verbatim off the homepage
 // (#contact). Keeps the same markup/classes/ids so the global script.js form
 // handler (getElementById('contactForm') + Formspree submit) keeps working,
-// and the shared .contact-* styles in style.css still apply. useBlogCss loads
-// the breadcrumb + .article-page shell.
+// and the shared .contact-* styles in style.css still apply.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -17,7 +16,6 @@ import { site } from '../data/site';
   canonical="https://calma.io/contacts/"
   ogTitle="Contact — Calma"
   ogDescription="Get in touch with Calma — performance lead generation for insurance, home services, and financial verticals."
-  useBlogCss={true}
 >
   <Header />
 

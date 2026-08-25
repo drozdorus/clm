@@ -1,10 +1,8 @@
 ---
-// Homepage — pixel-for-pixel port of the legacy index.html. All 9 sections
-// (Hero, About, Verticals, Team, Events, Blog teaser, FAQ, Contact, Footer).
-// Loads blog.css + team.css + team.js (homepage uses all three); bodyId="top".
-// Footer gets home={true} so its section links render as bare `#anchor`,
-// which is what script.js's smooth-scroll (`a[href^="#"]`) matches. The header
-// is page-level only now (no section anchors), so it takes no `home` prop.
+// Homepage — all main sections in one page: Hero, About, Verticals, Team,
+// Events, Blog teaser, FAQ, CTA band. bodyId="top" is the anchor the footer
+// logo (/#top) targets. Section navigation lives in the floating SectionNav
+// pill; the header carries page-level links only.
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
@@ -105,9 +103,6 @@ const latestPosts = (await getCollection('blog'))
   ogImage="https://calma.io/img/metaimg.png"
   twitterTitle="Calma — Performance Lead Generation Agency"
   twitterDescription="Compliance-first, AI-optimized lead acquisition for insurance, financial, and home improvement verticals."
-  useBlogCss={true}
-  useTeamCss={true}
-  useTeamScript={true}
   bodyId="top"
 >
   <Fragment slot="head">
@@ -500,5 +495,5 @@ const latestPosts = (await getCollection('blog'))
 
   <SectionNav />
 
-  <Footer home={true} />
+  <Footer />
 </BaseLayout>
