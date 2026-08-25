@@ -12,6 +12,7 @@ import Footer from '../components/Footer.astro';
 import SectionNav from '../components/SectionNav.astro';
 import IconSprite from '../components/IconSprite.astro';
 import ArticleCard from '../components/blog/ArticleCard.astro';
+import CtaBand from '../components/CtaBand.astro';
 import { events, formatUpcomingDate, formatPastDate } from '../data/events';
 import { team, accentFor } from '../data/team';
 
@@ -491,11 +492,7 @@ const latestPosts = (await getCollection('blog'))
   <!-- CTA band -->
   <section class="section" aria-label="Get in touch">
     <div class="container">
-      <div class="home-cta">
-        <h2 class="home-cta-heading">Ready to generate leads?</h2>
-        <p class="home-cta-text">Tell us about your vertical and volume goals — we'll show you how our acquisition system fits.</p>
-        <a href="/contacts/" class="vertical-cta-btn">Get in touch</a>
-      </div>
+      <CtaBand />
     </div>
   </section>
 

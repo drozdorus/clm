@@ -2,10 +2,9 @@
 // About page — company story with a neutral founder paragraph. Exists primarily
 // as the entity page for "Calma + Ruslan Drozdov" queries (SERM): reached via the
 // footer "About" link, not from the homepage body, by owner's decision.
-// Built from the shared design system: breadcrumb/article-page (blog.css),
-// section-title/subtitle + service-card glass cards (style.css), team cards
-// (team.css, founding trio from src/data/team.ts), and the homepage .home-cta
-// band before the footer. Each founder card toggles its own expandable panel
+// Built from the shared design system: Breadcrumb/PageHero, service-card glass
+// cards (style.css), team cards (founding trio from src/data/team.ts), and the
+// shared CtaBand before the footer. Each founder card toggles its own expandable panel
 // (accordion): Rus's holds the real bio — kept in the DOM when collapsed so
 // search engines index it — the other two hold a running "bio coming soon" joke
 // so the page doesn't read as built by the founder about himself.
@@ -14,6 +13,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
 import { team, accentFor } from '../data/team';
 
 const foundingNames = ['Rus', 'Yehor', 'Artur'];
@@ -236,11 +236,7 @@ const founderNotes: Record<string, string> = {
           </div>
         </div>
 
-        <div class="home-cta about-cta">
-          <h2 class="home-cta-heading">Ready to generate leads?</h2>
-          <p class="home-cta-text">Tell us about your vertical and volume goals — we'll show you how our acquisition system fits.</p>
-          <a href="/contacts/" class="vertical-cta-btn">Get in touch</a>
-        </div>
+        <CtaBand class="cta-band--flow" />
 
       </div>
     </div>
@@ -470,8 +466,5 @@ const founderNotes: Record<string, string> = {
   }
   .founder-icon-link:hover {
     color: var(--text);
-  }
-  .about-cta {
-    margin-top: var(--space-xl);
   }
 </style>

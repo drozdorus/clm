@@ -587,9 +587,27 @@ body {
   transform: translateY(3px);
 }
 
+/* Buttons — one primary action style site-wide (band CTAs, vertical heroes,
+   404, form submit). The Hiring pill in the header is the only other button
+   affordance and deliberately keeps its own outline-pill look. */
+.btn-primary {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-md);
+  background: var(--primary);
+  color: #0a0a0a;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s var(--ease), opacity 0.2s var(--ease);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
 /* 404 page — hero-style error screen ("zero-intent URL" joke). Reuses the
-   hero centering + gradient title; the button mirrors .home-cta's
-   .vertical-cta-btn (that declaration is scoped, so redeclared here). */
+   hero centering + gradient title with the shared .btn-primary. */
 .error-hero .error-code {
   font-size: clamp(5rem, 18vw, 9rem);
   margin-bottom: var(--space-sm);
@@ -605,22 +623,6 @@ body {
   max-width: 520px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.error-hero .vertical-cta-btn {
-  display: inline-block;
-  padding: 0.8rem 1.6rem;
-  border-radius: var(--radius-md);
-  background: var(--primary);
-  color: #0a0a0a;
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.2s var(--ease), opacity 0.2s var(--ease);
-}
-
-.error-hero .vertical-cta-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.92;
 }
 
 /* Sections */
@@ -1267,23 +1269,14 @@ body {
   color: var(--text-muted);
 }
 
+/* Form submit = .btn-primary + these form-specific overrides (markup carries
+   both classes). Was a one-off gradient button before the button consolidation. */
 .submit-button {
   font-family: var(--font-body);
   width: 100%;
-  padding: 14px;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: var(--bg);
   border: none;
-  border-radius: var(--radius-sm);
   font-size: 15px;
-  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s var(--ease-spring);
-}
-
-.submit-button:hover {
-  transform: scale(1.015) translateY(-1px);
-  box-shadow: var(--glow);
 }
 
 .submit-button:disabled {
@@ -1292,11 +1285,10 @@ body {
   transform: none;
 }
 
-/* Homepage CTA band — glass band linking to the contact page. Mirrors the
-   .vertical-cta band on the vertical pages (heading + line + button). The
-   button reuses the .vertical-cta-btn look, redeclared here because that
-   class is scoped to the vertical page's <style>. */
-.home-cta {
+/* CTA band — shared glass band (CtaBand.astro): homepage, /about/, vertical
+   pages. Default margin fits the homepage's own padded .section wrapper;
+   .cta-band--flow spaces it when the band follows page content directly. */
+.cta-band {
   margin: 1rem 0;
   padding: 2.5rem;
   text-align: center;
@@ -1305,31 +1297,19 @@ body {
   background: var(--glass-bg);
 }
 
-.home-cta-heading {
+.cta-band--flow {
+  margin: 3.5rem 0 1rem;
+}
+
+.cta-band-heading {
   font-size: 1.5rem;
   margin-bottom: 0.6rem;
 }
 
-.home-cta-text {
+.cta-band-text {
   color: var(--text-secondary);
   max-width: 520px;
   margin: 0 auto 1.5rem;
-}
-
-.home-cta .vertical-cta-btn {
-  display: inline-block;
-  padding: 0.8rem 1.6rem;
-  border-radius: var(--radius-md);
-  background: var(--primary);
-  color: #0a0a0a;
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.2s var(--ease), opacity 0.2s var(--ease);
-}
-
-.home-cta .vertical-cta-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.92;
 }
 
 /* Footer */

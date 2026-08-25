@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import CtaBand from '../../components/CtaBand.astro';
 
 export async function getStaticPaths() {
   const verticals = await getCollection('verticals');
@@ -50,7 +51,7 @@ const faqJsonLd = {
         <header class="vertical-hero">
           <h1 class="section-title vertical-hero-title">{data.h1}</h1>
           <p class="vertical-hero-lead">{data.heroLead}</p>
-          <a href="/contacts/" class="vertical-cta-btn">Get in touch</a>
+          <a href="/contacts/" class="btn-primary">Get in touch</a>
         </header>
 
         <article class="article-prose vertical-prose">
@@ -91,11 +92,7 @@ const faqJsonLd = {
           </div>
         </section>
 
-        <section class="vertical-cta">
-          <h2 class="vertical-cta-heading">{data.cta.heading}</h2>
-          <p class="vertical-cta-text">{data.cta.text}</p>
-          <a href="/contacts/" class="vertical-cta-btn">Get in touch</a>
-        </section>
+        <CtaBand class="cta-band--flow" heading={data.cta.heading} text={data.cta.text} />
 
       </div>
     </div>
@@ -133,40 +130,9 @@ const faqJsonLd = {
     line-height: 1.6;
     margin-bottom: 1.75rem;
   }
-  .vertical-cta-btn {
-    display: inline-block;
-    padding: 0.8rem 1.6rem;
-    border-radius: var(--radius-md);
-    background: var(--primary);
-    color: #0a0a0a;
-    font-weight: 600;
-    text-decoration: none;
-    transition: transform 0.2s var(--ease), opacity 0.2s var(--ease);
-  }
-  .vertical-cta-btn:hover {
-    transform: translateY(-2px);
-    opacity: 0.92;
-  }
   .vertical-pillars,
   .vertical-channels,
   .vertical-faq {
     margin-top: 3rem;
-  }
-  .vertical-cta {
-    margin: 3.5rem 0 1rem;
-    padding: 2.5rem;
-    text-align: center;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    background: var(--glass-bg);
-  }
-  .vertical-cta-heading {
-    font-size: 1.5rem;
-    margin-bottom: 0.6rem;
-  }
-  .vertical-cta-text {
-    color: var(--text-secondary);
-    max-width: 520px;
-    margin: 0 auto 1.5rem;
   }
 </style>
