@@ -101,6 +101,41 @@ html {
   overflow-x: clip;
 }
 
+/* Cross-document view transitions — Chromium/Safari cross-fade between page
+   loads; browsers without support just navigate. Disabled for reduced motion. */
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
+/* Brand text selection */
+::selection {
+  background: var(--primary);
+  color: #0a0a0a;
+}
+
+/* One amber focus ring sitewide (replaces the default blue); components with
+   their own focus treatment (FAQ summary, founder cards) override it. */
+:focus-visible {
+  outline: 2px solid rgba(232, 181, 71, 0.6);
+  outline-offset: 2px;
+}
+
+/* Balanced line wrapping on display text — no orphan words in headings. */
+.hero-title,
+.section-title,
+.section-subtitle,
+.article-hero-title,
+.cta-band-heading,
+.error-heading {
+  text-wrap: balance;
+}
+
 /* Anchor targets stop short of the fixed header (replaces the old JS
    offset-scroll handler; native hash navigation handles the rest). */
 [id] {
@@ -1170,7 +1205,12 @@ body {
   margin: 0;
 }
 
-/* Contact */
+/* Contact — the page hero (Breadcrumb + PageHero) sits above; this block only
+   spaces the grid and pads the page bottom before the footer. */
+.contact {
+  padding: var(--space-md) 0 80px;
+}
+
 .contact-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
