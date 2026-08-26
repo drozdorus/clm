@@ -60,6 +60,8 @@
   /* Typography */
   --font-body: 'Geologica', sans-serif;
   --font-heading: 'Geologica', sans-serif;
+  /* System mono stack for micro-labels — zero bytes, technical voice. */
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
   
   /* Border Radius */
   --radius-sm: 8px;
@@ -134,6 +136,42 @@ html {
 .cta-band-heading,
 .error-heading {
   text-wrap: balance;
+}
+
+/* Cap-height trimming on display headings — the font's built-in leading no
+   longer pads the box, so spacing lands exactly where the margins say.
+   Progressive (Chromium/Safari). .hero-title excluded: its gradient
+   background-clip depends on the untrimmed line box. */
+.section-title,
+.article-hero-title,
+.cta-band-heading {
+  text-box: trim-both cap alphabetic;
+}
+
+/* Mono micro-labels — dates, tags, and eyebrow labels speak monospace for a
+   technical voice; everything else stays Geologica. */
+.badge-text,
+.conference-date,
+.past-conference-date,
+.article-tag,
+.article-read-time,
+.article-related-label,
+.footer-heading {
+  font-family: var(--font-mono);
+}
+
+/* Film grain — static SVG noise over the whole viewport at ~3% opacity.
+   Kills the flat digital black; pointer-events off, no animation, so it
+   costs one cached 240px tile and nothing per-frame. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
 }
 
 /* Anchor targets stop short of the fixed header (replaces the old JS
