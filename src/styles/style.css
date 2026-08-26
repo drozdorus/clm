@@ -197,7 +197,9 @@ body {
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
-  overflow-x: hidden;
+  /* clip, not hidden: hidden would make body a scroll container and hijack
+     the view() timelines of the scroll-driven reveal below. */
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -2510,4 +2512,55 @@ a.logo {
 .article-read-time {
   font-family: var(--font-mono);
   font-weight: 400;
+}
+
+/* =====================================================================
+   Scroll-driven reveal (Chromium / new Safari) — block reveals are driven
+   by each element's own viewport position (animation-timeline: view()),
+   so content proofs in sync with the scroll and scrubs back out on the
+   way up. Browsers without support keep the JS IntersectionObserver
+   one-shot reveal untouched; here we neutralize that path instead.
+   Cards inside the horizontal scrollers (team, upcoming events) get only
+   the section-level reveal on purpose: a whole row shares one vertical
+   position, so per-card scrubbing would just duplicate the section fade.
+   animation-timeline goes through a custom property on purpose:
+   lightningcss otherwise folds it into the `animation` shorthand, which
+   is invalid grammar there, and the browser drops the whole declaration.
+   ===================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .section.pre-fade {
+      opacity: 1;
+      transform: none;
+    }
+    .section.pre-fade .methodology-item,
+    .section.pre-fade .service-card {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    @keyframes scroll-reveal {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .section {
+      --reveal-tl: view();
+      animation: scroll-reveal linear both;
+      animation-timeline: var(--reveal-tl);
+      animation-range: entry 0% entry 35%;
+    }
+
+    .methodology-item,
+    .service-card,
+    .article-card,
+    .faq-list {
+      --reveal-tl: view();
+      animation: scroll-reveal linear both;
+      animation-timeline: var(--reveal-tl);
+      animation-range: entry 0% entry 60%;
+      transition: none;
+    }
+  }
 }
