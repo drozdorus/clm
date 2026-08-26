@@ -2498,8 +2498,9 @@ a.logo {
 /* =====================================================================
    Mono micro-labels — dates and tags only, in a quiet monospace voice.
    Reference: drozdorus.com portfolio status labels — small size, regular
-   weight, lowercase; thin and precise, never bold. Placed last so the
-   weight/transform here win over the labels' own earlier declarations.
+   weight, natural casing (months and abbreviations keep their capitals);
+   thin and precise, never bold. Placed last so the weight here wins over
+   the labels' own earlier declarations.
    Section headings (footer columns etc.) deliberately stay Geologica.
    ===================================================================== */
 .badge-text,
@@ -2509,5 +2510,4 @@ a.logo {
 .article-read-time {
   font-family: var(--font-mono);
   font-weight: 400;
-  text-transform: lowercase;
 }
