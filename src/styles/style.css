@@ -60,8 +60,10 @@
   /* Typography */
   --font-body: 'Geologica', sans-serif;
   --font-heading: 'Geologica', sans-serif;
-  /* System mono stack for micro-labels — zero bytes, technical voice. */
-  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+  /* System mono stack for micro-labels — zero bytes. Menlo-first on purpose:
+     thin, classic cut (the drozdorus.com status-label look), not the tall
+     heavy SF Mono. */
+  --font-mono: Menlo, Consolas, 'Cascadia Code', ui-monospace, monospace;
   
   /* Border Radius */
   --radius-sm: 8px;
@@ -146,18 +148,6 @@ html {
 .article-hero-title,
 .cta-band-heading {
   text-box: trim-both cap alphabetic;
-}
-
-/* Mono micro-labels — dates, tags, and eyebrow labels speak monospace for a
-   technical voice; everything else stays Geologica. */
-.badge-text,
-.conference-date,
-.past-conference-date,
-.article-tag,
-.article-read-time,
-.article-related-label,
-.footer-heading {
-  font-family: var(--font-mono);
 }
 
 /* Film grain — static SVG noise over the whole viewport at ~3% opacity.
@@ -778,11 +768,9 @@ body {
 }
 
 .badge-text {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
 }
 
 /* Methodology */
@@ -1126,8 +1114,8 @@ body {
 
 .conference-date {
   color: var(--secondary);
-  font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
   margin-bottom: var(--space-xs);
 }
 
@@ -1198,10 +1186,8 @@ body {
 
 .past-conference-date {
   color: var(--text-muted);
-  font-weight: 600;
   font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
 }
 
 .past-conference-name {
@@ -1988,10 +1974,8 @@ a.logo {
 }
 
 .article-tag {
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: 0.66rem;
+  letter-spacing: 0.05em;
   color: var(--primary);
   border: 1px solid rgba(232, 181, 71, 0.3);
   border-radius: 100px;
@@ -2509,4 +2493,21 @@ a.logo {
   .team-card::before {
     transition: none;
   }
+}
+
+/* =====================================================================
+   Mono micro-labels — dates and tags only, in a quiet monospace voice.
+   Reference: drozdorus.com portfolio status labels — small size, regular
+   weight, lowercase; thin and precise, never bold. Placed last so the
+   weight/transform here win over the labels' own earlier declarations.
+   Section headings (footer columns etc.) deliberately stay Geologica.
+   ===================================================================== */
+.badge-text,
+.conference-date,
+.past-conference-date,
+.article-tag,
+.article-read-time {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  text-transform: lowercase;
 }

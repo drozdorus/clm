@@ -201,13 +201,15 @@ function parts(iso: string) {
   return { y, m, d };
 }
 
-/** "9-11 Jun 2026" / "28 May 2026" / "30 Jun - 1 Jul 2026" */
+/** "09–11 Jun 2026" / "28 May 2026" / "30 Jun – 01 Jul 2026" — zero-padded
+ *  days + en dashes for the mono label treatment (CSS lowercases the month). */
 export function formatUpcomingDate(e: CalmaEvent): string {
   const s = parts(e.start);
   const en = parts(e.end);
-  if (e.start === e.end) return `${s.d} ${MONTHS[s.m - 1]} ${s.y}`;
-  if (s.m === en.m && s.y === en.y) return `${s.d}-${en.d} ${MONTHS[s.m - 1]} ${s.y}`;
-  return `${s.d} ${MONTHS[s.m - 1]} - ${en.d} ${MONTHS[en.m - 1]} ${en.y}`;
+  const dd = (d: number) => String(d).padStart(2, '0');
+  if (e.start === e.end) return `${dd(s.d)} ${MONTHS[s.m - 1]} ${s.y}`;
+  if (s.m === en.m && s.y === en.y) return `${dd(s.d)}–${dd(en.d)} ${MONTHS[s.m - 1]} ${s.y}`;
+  return `${dd(s.d)} ${MONTHS[s.m - 1]} – ${dd(en.d)} ${MONTHS[en.m - 1]} ${en.y}`;
 }
 
 /** "May 2026" */
